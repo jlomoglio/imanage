@@ -22,12 +22,16 @@ const ChatPersonList = inject('ChatStore')(observer(props => {
 
   return (
     <Styles>
-      <div style={{ display: ChatStore.showChatScreen ? 'none' : 'display' }}>
+      <div style={{ 
+        display: ChatStore.showChatList ? 'display' : 'none'
+      }}>
         <div className="chat-section-text">CHAT GROUPS</div>
-        <ChatGroupItem label="General" />
-        <ChatGroupItem label="Sales" />
-        <ChatGroupItem label="Development" />
-
+        {
+          ChatStore.chatGroups.map((group, index) => (
+            <ChatGroupItem label={group} />
+          ))
+        }
+        
         <div className="chat-section-text mt-3 mb-3">DIRECT MESSAGES</div>
         {
           ChatStore.teamMembers.map((member, index) => (

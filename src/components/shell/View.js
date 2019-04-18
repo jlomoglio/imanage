@@ -25,7 +25,7 @@ class View extends Component {
     const Styles = styled.div`
       .view {
         position: fixed;
-        top: 80px;
+        top: 90px;
         right: 0;
         bottom: 0;
         background: #fcfcfc;

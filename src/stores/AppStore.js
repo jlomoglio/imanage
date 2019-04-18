@@ -6,7 +6,7 @@ class AppStore {
   @observable appView = 'Dashboard';
   @observable appSubView = '';
   @observable sidebarOpen = true;
-  @observable sidePanelOpen = true;
+  @observable sidePanelOpen = false;
   @observable profileMenuOpen = false;
   @observable navSubItemOpen = false;
 

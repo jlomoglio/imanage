@@ -12,7 +12,7 @@ class Viewbar extends Component {
     const Styles = styled.div`
       .view-bar {
         position: fixed;
-        top: 40px;
+        top: 50px;
         right: 0;
         height: 40px;
         background: #4c4b4b;

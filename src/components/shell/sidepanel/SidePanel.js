@@ -3,6 +3,8 @@ import { inject, observer } from 'mobx-react';
 import styled from 'styled-components';
 import ChatPersonList from './ChatPersonList';
 import ChatPersonWindow from './ChatPersonWindow';
+import ChatGroupWindow from './ChatGroupWindow';
+import ChatSettingsWindow from './ChatSettingsWindow';
 
 @inject('AppStore', 'ChatStore')
 @observer
@@ -10,7 +12,7 @@ class SidePanel extends Component {
   render() {
 
     const AppStore = this.props.AppStore;
-    //const ChatStore = this.props.ChatStore;
+    const ChatStore = this.props.ChatStore;
 
     const Styles = styled.div`
       .side-panel {
@@ -20,10 +22,21 @@ class SidePanel extends Component {
         bottom: 0px;
         border-left: 1px solid #4c4b4b;
         background: #1b1e24;
+      }
 
+      .chat-section {
+        overflow-y: scroll;
+        overflow: -moz-scrollbars-none;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
         ::-webkit-scrollbar { 
           width: 0 !important 
         }
+        position: absolute;
+        top: 70px;
+        right: 0px;
+        left: 0px;
+        bottom: 0px;
       }
 
       .pull-right {
@@ -58,14 +71,19 @@ class SidePanel extends Component {
             boxShadow: AppStore.sidePanelOpen ? "0 0 8px 3px rgba(0, 0, 0, 0.5)" : ""
           }}
         >
-          <div className="search-box">
+          <div 
+            className="search-box"
+            style={{ display: ChatStore.showChatSettingsScreen ? 'none' : 'display' }}
+          >
             <input type="text" placeholder="search" /> 
-            <i className="fas fa-cog pl-2" />
+            <i className="fas fa-cog pl-2" onClick={() => ChatStore.selectChatSettings()} />
           </div>
 
           <div className="chat-section">
             <ChatPersonList />
             <ChatPersonWindow />
+            <ChatGroupWindow />
+            <ChatSettingsWindow />
           </div>
         </div>
       </Styles>

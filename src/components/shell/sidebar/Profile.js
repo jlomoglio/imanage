@@ -20,7 +20,7 @@ class Profile extends Component {
           inset 1px 1px 0 rgba(0,0,0,.1), 
           inset 0 -1px 0 rgba(0,0,0,.07);
         width: 100%;
-        margin: 0!important;
+        margin: 0 !important;
         border-bottom: 1px solid #525151;
         cursor: pointer;
       }
@@ -41,6 +41,11 @@ class Profile extends Component {
         color: white;
       }
 
+      .status {
+        font-size: .6em;
+        color: white;
+      }
+
       .linkItem {
         cursor: pointer;
         color: white;
@@ -52,16 +57,17 @@ class Profile extends Component {
     return (
       <Styles>
         <div 
-          className="profile-box"
+          className="profile-box pt-4"
           onClick={() => AppStore.toggleProfileCollapse()}
         >
           <div className="row">
             <div className="col-sm-4">
               <img src={profileImg} className="photo" alt="Avatar" />
             </div>
-            <div className="col-sm-8 pt-2">
+            <div className="col-sm-8 pt-1">
               <div className="name">Joe LoMoglio</div>
               <div className="title">Front End Developer</div>
+              <div className="status">Available</div>
             </div>
           </div>
         </div>
@@ -72,6 +78,9 @@ class Profile extends Component {
         }}>
           <div className="linkItem" onClick={() => AppStore.setView('User Profile')}>
             <i className="fas fa-user mr-2" /> User Profile
+          </div>
+          <div className="linkItem" onClick={() => AppStore.setStatus()}>
+            <i className="fas fa-user mr-2" /> Set Status
           </div>
           <div className="linkItem" onClick={() => AppStore.setView('Settings')}>
             <i className="fas fa-cog mr-2" /> Settings

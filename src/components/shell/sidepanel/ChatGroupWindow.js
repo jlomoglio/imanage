@@ -6,7 +6,7 @@ import ChatUserMessage from './ChatUserMessage';
 import meImg from '../../../assets/Me_Vector.jpg';
 
 
-const ChatPersonWindow = inject('ChatStore')(observer(props => {
+const ChatGroupWindow = inject('ChatStore')(observer(props => {
 
   const ChatStore = props.ChatStore;
 
@@ -53,8 +53,8 @@ const ChatPersonWindow = inject('ChatStore')(observer(props => {
       overflow: -moz-scrollbars-none;
       -ms-overflow-style: none;
       ::-webkit-scrollbar { 
-        width: 0 !important 
-      }
+          width: 0 !important 
+        }
 
       .timestamp {
         text-align: center;
@@ -77,18 +77,14 @@ const ChatPersonWindow = inject('ChatStore')(observer(props => {
     }
   `;
 
+  const currentGroupMessages = ChatStore.currentChatGroup;
 
   return (
     <Styles>
-      <div style={{ display: ChatStore.showChatScreen ? 'display' : 'none', marginLeft: '-10px' }}>
+      <div style={{ display: ChatStore.showGroupChatScreen ? 'display' : 'none', marginLeft: '-10px' }}>
         <div className="chat-section-text">
-          <i 
-            className={`
-              ${ChatStore.currentChatMemberStatus === 'online' ? 'status-online' : 'status-offline'} 
-              fas fa-circle ml-3 mr-3 mt-3`
-            } 
-          />
-          { ChatStore.currentChatMember }
+          <i className="fab fa-slack-hash mr-1 ml-3 mt-3" />
+          { ChatStore.currentChatGroup }
 
           <i 
             className="far fa-times-circle pull-right close"
@@ -98,56 +94,61 @@ const ChatPersonWindow = inject('ChatStore')(observer(props => {
 
         <div className="chat-window ml-1 mr-2">
           {
-            ChatStore.currentChatMember === 'Jane Smith' &&
-            ChatStore.janeMessages.map((msg, index) => (
+            ChatStore.currentChatGroup === 'General' &&
+            ChatStore.groupMessagesGeneral.map((msg, index) => (
               <React.Fragment>
                 <div 
                   className="timestamp" 
                   style={{ display: index === 0 ? 'block' : 'none' }}
                   key={`${index}_${Math.random()}`}
                 >
-                  <span>Yesterday 11:25 pm</span>
+                  <span>Today 11:30 am</span>
                 </div>
                 <ChatPersonMessage
                   msg={msg.msg} 
-                  img={ChatStore.currentChatMemberImage}
+                  img={msg.image}
                   key={`${index}_${Math.random()}_${Math.random()}`}
                 />
               </React.Fragment>
             ))
           }
           {
-            ChatStore.currentChatMember === 'Marco James' &&
-            ChatStore.marcoMessages.map((msg, index) => (
+            ChatStore.currentChatGroup === 'Sales' &&
+            ChatStore.groupMessagesSales.map((msg, index) => (
               <React.Fragment>
                 <div 
                   className="timestamp" 
                   style={{ display: index === 0 ? 'block' : 'none' }}
-                  key={`${index}_${Math.random()}_${Math.random()}`}
+                  key={`${index}_${Math.random()}`}
                 >
-                  <span>Today 10:45 am</span>
+                  <span>Today 2:30 pm</span>
                 </div>
                 <ChatPersonMessage
                   msg={msg.msg} 
-                  img={ChatStore.currentChatMemberImage}
-                  key={`${index}_${Math.random()}`} 
+                  img={msg.image}
+                  key={`${index}_${Math.random()}_${Math.random()}`}
                 />
               </React.Fragment>
             ))
           }
           {
-            ChatStore.currentChatMember === 'Jane Smith' && 
-            <ChatUserMessage 
-              msg="Hey, sorry was in another meeting" 
-              img={meImg} 
-            />
-          }
-          {
-            ChatStore.currentChatMember === 'Marco James' && 
-            <ChatUserMessage 
-              msg="Hey, sorry was in another meeting" 
-              img={meImg} 
-            />
+            ChatStore.currentChatGroup === 'Development' &&
+            ChatStore.groupMessagesDevelopment.map((msg, index) => (
+              <React.Fragment>
+                <div 
+                  className="timestamp" 
+                  style={{ display: index === 0 ? 'block' : 'none' }}
+                  key={`${index}_${Math.random()}`}
+                >
+                  <span>Today 3:30 pm</span>
+                </div>
+                <ChatPersonMessage
+                  msg={msg.msg} 
+                  img={msg.image}
+                  key={`${index}_${Math.random()}_${Math.random()}`}
+                />
+              </React.Fragment>
+            ))
           }
         </div>
 
@@ -161,4 +162,4 @@ const ChatPersonWindow = inject('ChatStore')(observer(props => {
   );
 }));
 
-export default ChatPersonWindow;
+export default ChatGroupWindow;
