@@ -6,11 +6,13 @@ import * as serviceWorker from './serviceWorker';
 import { Provider } from 'mobx-react';
 import AppStore from './stores/AppStore';
 import DashboardStore from './stores/DashboardStore';
+import ChatStore from './stores/ChatStore';
 
 const Root = (
   <Provider 
     AppStore={AppStore} 
     DashboardStore={DashboardStore}
+    ChatStore={ChatStore}
   >
     <App />
   </Provider>

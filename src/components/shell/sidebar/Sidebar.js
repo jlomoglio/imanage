@@ -15,14 +15,13 @@ class Sidebar extends Component {
     const Styles = styled.div`
       .sidebar {
         position: fixed;
-        top: 56px;
+        top: 40px;
         left: 0;
         bottom: 0;
         background: #1A1817;
         overflow-x: scroll;
         overflow: -moz-scrollbars-none;
         -ms-overflow-style: none;
-
         ::-webkit-scrollbar { 
           width: 0 !important 
         }

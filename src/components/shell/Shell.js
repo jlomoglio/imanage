@@ -4,6 +4,7 @@ import Header from './Header';
 import Sidebar from './sidebar/Sidebar';
 import View from './View';
 import Viewbar from './Viewbar';
+import SidePanel from './sidepanel/SidePanel'
 
 @inject('AppStore') 
 @observer
@@ -18,6 +19,7 @@ class Shell extends Component {
         <Sidebar />
         <Viewbar  />
         <View  />
+        <SidePanel />
       </React.Fragment>
     );
   }

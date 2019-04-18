@@ -15,6 +15,9 @@ class NavItem extends Component {
         color: #ccc;
         padding: 10px;
         cursor: pointer;
+        font-size: 12.5px;
+        font-weight: 600;
+        letter-spacing: .3px;
       }
     `;
 
@@ -25,7 +28,7 @@ class NavItem extends Component {
           onClick={() => AppStore.toggleSubItemCollapse(this.props.sub, this.props.view)} 
           style={{ borderBottom: AppStore.navSubItemOpen ? '' : '1px solid #2b2b2b' }}
         >
-          <i className={`fas ${this.props.icon} pr-3`} /> { this.props.label } 
+          <i className={`fas ${this.props.icon} pr-2`} /> { this.props.label } 
           <i 
             className={`fas ${AppStore.navSubItemOpen ? 'fa-angle-up' : 'fa-angle-down'} pull-right pt-1`}
             style={{ display: this.props.sub ? 'block' : 'none' }}

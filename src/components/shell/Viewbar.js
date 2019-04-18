@@ -12,10 +12,11 @@ class Viewbar extends Component {
     const Styles = styled.div`
       .view-bar {
         position: fixed;
-        top: 56px;
+        top: 40px;
         right: 0;
         height: 40px;
-        background: #fff;
+        background: #4c4b4b;
+        color: white;
         padding: 8px;
       }
 
@@ -29,7 +30,10 @@ class Viewbar extends Component {
       <Styles>
         <div 
           className="view-bar"
-          style={{ left: AppStore.sidebarOpen ? "200px" : "0px" }}
+          style={{ 
+            left: AppStore.sidebarOpen ? "200px" : "0px",
+            right: AppStore.sidePanelOpen ? "300px" : "0px" 
+          }}
         >
         <i 
           className="fas fa-bars mr-2 clickable" 

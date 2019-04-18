@@ -25,11 +25,11 @@ class View extends Component {
     const Styles = styled.div`
       .view {
         position: fixed;
-        top: 96px;
+        top: 80px;
         right: 0;
         bottom: 0;
-        background: #ccc;
-        overflow-y: scroll;
+        background: #fcfcfc;
+        overflow-y: auto;
       }
     `;
 
@@ -37,7 +37,10 @@ class View extends Component {
       <Styles>
         <div 
           className="view"
-          style={{ left: AppStore.sidebarOpen ? "200px" : "0px" }}
+          style={{ 
+            left: AppStore.sidebarOpen ? "200px" : "0px",
+            right: AppStore.sidePanelOpen ? "300px" : "0px" 
+          }}
         >
           { AppStore.appView === 'User Profile' && <UserProfile /> }
           { AppStore.appView === 'Settings' && <Settings /> } 

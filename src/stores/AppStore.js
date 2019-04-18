@@ -1,14 +1,16 @@
 import { observable, action } from 'mobx';
 
 class AppStore {
-  
+  @observable appTitle = 'iManage';
+  @observable appVersion = 'v0.0.1';
   @observable appView = 'Dashboard';
   @observable appSubView = '';
   @observable sidebarOpen = true;
+  @observable sidePanelOpen = true;
   @observable profileMenuOpen = false;
   @observable navSubItemOpen = false;
 
-
+ 
   @action toggleProfileCollapse(view) {
     this.profileMenuOpen = !this.profileMenuOpen
     this.navSubItemOpen = false
@@ -16,6 +18,10 @@ class AppStore {
   
   @action toggleSidebarCollapse() {
     this.sidebarOpen = !this.sidebarOpen
+  }
+
+  @action toggleSidePanelCollapse() {
+    this.sidePanelOpen = !this.sidePanelOpen
   }
 
   @action toggleSubItemCollapse(sub, view) {
