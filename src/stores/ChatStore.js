@@ -1,4 +1,5 @@
 import { observable, action } from 'mobx';
+import UserProfileStore from '../stores/UserProfileStore';
 
 import avatarJane from '../assets/avatar-jane-smith.jpg';
 import avatarFrank from '../assets/avatar-frank-morrow.jpg';
@@ -6,7 +7,7 @@ import avatarTed from '../assets/avatar-ted-anderson.jpg';
 import avatarMark from '../assets/avatar-mark-wilson.jpg';
 import avatarMarco from '../assets/avatar-marco-james.jpg';
 import avatarMarvin from '../assets/avatar-marvin-elmore.jpg';
-import avatarJoe from '../assets/Me_Vector.jpg';
+//import avatarJoe from '../assets/Me_Vector.jpg';
 
 import avatarMike from '../assets/avatar-marvin-elmore.jpg';
 import avatarKim from '../assets/avatar-marvin-elmore.jpg';
@@ -133,7 +134,7 @@ class ChatStore {
   @observable groupMessagesGeneral = [
     { 
       memeber: 'Joe LoMoglio',
-      image: avatarJoe,
+      image: UserProfileStore.avatar,
       status: 'online',
       msg: 'So what do you want to do for lunch?' 
     },
@@ -165,7 +166,7 @@ class ChatStore {
   @observable groupMessagesSales = [
     { 
       memeber: 'Joe LoMoglio',
-      image: avatarJoe,
+      image: UserProfileStore.avatar,
       status: 'online',
       msg: 'Can you send me the sales report from last month?' 
     },
@@ -177,7 +178,7 @@ class ChatStore {
     },
     { 
       memeber: 'Joe LoMoglio',
-      image: avatarJoe,
+      image: UserProfileStore.avatar,
       status: 'online',
       msg: 'Cool thank you' 
     },
@@ -191,7 +192,7 @@ class ChatStore {
   @observable groupMessagesDevelopment = [
     { 
       memeber: 'Joe LoMoglio',
-      image: avatarJoe,
+      image: UserProfileStore.avatar,
       status: 'online',
       msg: 'Hey guys can we have a quick meeting' 
     },
@@ -215,7 +216,7 @@ class ChatStore {
     },
     { 
       memeber: 'Joe LoMoglio',
-      image: avatarJoe,
+      image: UserProfileStore.avatar,
       status: 'online',
       msg: '@Marvin we can fill them in later' 
     },

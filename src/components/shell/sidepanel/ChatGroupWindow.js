@@ -2,9 +2,6 @@ import React from 'react';
 import { inject, observer } from 'mobx-react';
 import styled from 'styled-components';
 import ChatPersonMessage from './ChatPersonMessage';
-import ChatUserMessage from './ChatUserMessage';
-import meImg from '../../../assets/Me_Vector.jpg';
-
 
 const ChatGroupWindow = inject('ChatStore')(observer(props => {
 

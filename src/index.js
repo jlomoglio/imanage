@@ -5,12 +5,14 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'mobx-react';
 import AppStore from './stores/AppStore';
+import UserProfileStore from './stores/UserProfileStore';
 import DashboardStore from './stores/DashboardStore';
 import ChatStore from './stores/ChatStore';
 
 const Root = (
   <Provider 
     AppStore={AppStore} 
+    UserProfileStore={UserProfileStore}
     DashboardStore={DashboardStore}
     ChatStore={ChatStore}
   >

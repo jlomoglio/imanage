@@ -1,7 +1,6 @@
 import React from 'react';
 import { inject, observer } from 'mobx-react';
 import styled from 'styled-components';
-import Badge from 'react-bootstrap/Badge';
 
 const ChatGroupItem = inject('ChatStore')(observer(props => {
 

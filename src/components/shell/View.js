@@ -3,7 +3,7 @@ import { inject, observer } from 'mobx-react';
 import styled from 'styled-components';
 
 // PROFILE 
-import UserProfile from '../../views/Profile/UserProfile';
+import UserProfile from '../../views/Profile/UserProfile/UserProfile';
 import Settings from '../../views/Profile/Settings';
 import Help from '../../views/Profile/Help';
 
@@ -30,6 +30,10 @@ class View extends Component {
         bottom: 0;
         background: #fcfcfc;
         overflow-y: auto;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        padding-bottom: 30px;
       }
     `;
 

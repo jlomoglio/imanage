@@ -3,12 +3,12 @@ import { inject, observer } from 'mobx-react';
 import styled from 'styled-components';
 import ChatPersonMessage from './ChatPersonMessage';
 import ChatUserMessage from './ChatUserMessage';
-import meImg from '../../../assets/Me_Vector.jpg';
 
 
-const ChatPersonWindow = inject('ChatStore')(observer(props => {
+const ChatPersonWindow = inject('ChatStore', 'UserProfileStore')(observer(props => {
 
   const ChatStore = props.ChatStore;
+  const UserProfileStore = props.UserProfileStore;
 
   const Styles = styled.div`
     .pull-right {
@@ -139,14 +139,14 @@ const ChatPersonWindow = inject('ChatStore')(observer(props => {
             ChatStore.currentChatMember === 'Jane Smith' && 
             <ChatUserMessage 
               msg="Hey, sorry was in another meeting" 
-              img={meImg} 
+              img={UserProfileStore.avatar} 
             />
           }
           {
             ChatStore.currentChatMember === 'Marco James' && 
             <ChatUserMessage 
               msg="Hey, sorry was in another meeting" 
-              img={meImg} 
+              img={UserProfileStore.avatar} 
             />
           }
         </div>

@@ -3,12 +3,13 @@ import { observable, action } from 'mobx';
 class AppStore {
   @observable appTitle = 'iManage';
   @observable appVersion = 'v0.0.1';
-  @observable appView = 'Dashboard';
+  @observable appView = 'User Profile';
   @observable appSubView = '';
   @observable sidebarOpen = true;
   @observable sidePanelOpen = false;
   @observable profileMenuOpen = false;
   @observable navSubItemOpen = false;
+  @observable userStatus = 'Available';
 
  
   @action toggleProfileCollapse(view) {

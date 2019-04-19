@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import styled from 'styled-components';
-import profileImg from '../../../assets/Me_Vector.jpg';
 
-@inject('AppStore')
+@inject('AppStore', 'UserProfileStore')
 @observer
 class Profile extends Component {
   render() {
 
     const AppStore = this.props.AppStore;
+    const UserProfileStore = this.props.UserProfileStore;
 
     const Styles = styled.div`
       .profile-box {
@@ -48,9 +48,77 @@ class Profile extends Component {
 
       .linkItem {
         cursor: pointer;
-        color: white;
+        color: #ccc;
         font-size: .9em;
         padding: 10px;
+
+        &:hover {
+          color: white;
+        }
+      }
+
+      .available.fa-stack[data-count]:after{
+        position: absolute;
+        right: -40%;
+        top: 95%;
+        content: '';
+        font-size: 9.5px;
+        padding: 1em;
+        border-radius: 999px;
+        line-height: .75em;
+        text-align: center;
+        min-width: 2em;
+        font-weight: bold;
+        margin-left: 5px;
+        background: green !important;
+      }
+
+      .away.fa-stack[data-count]:after{
+        position: absolute;
+        right: -40%;
+        top: 95%;
+        content: '';
+        font-size: 9.5px;
+        padding: 1em;
+        border-radius: 999px;
+        line-height: .75em;
+        text-align: center;
+        min-width: 2em;
+        font-weight: bold;
+        margin-left: 5px;
+        background: orange !important;
+      }
+
+      .inactive.fa-stack[data-count]:after{
+        position: absolute;
+        right: -40%;
+        top: 95%;
+        content: '';
+        font-size: 9.5px;
+        padding: 1em;
+        border-radius: 999px;
+        line-height: .75em;
+        text-align: center;
+        min-width: 2em;
+        font-weight: bold;
+        margin-left: 5px;
+        background: grey !important;
+      }
+
+      .offline.fa-stack[data-count]:after{
+        position: absolute;
+        right: -40%;
+        top: 95%;
+        content: '';
+        font-size: 9.5px;
+        padding: 1em;
+        border-radius: 999px;
+        line-height: .75em;
+        text-align: center;
+        min-width: 2em;
+        font-weight: bold;
+        margin-left: 5px;
+        background: red !important;
       }
     `;
 
@@ -62,7 +130,14 @@ class Profile extends Component {
         >
           <div className="row">
             <div className="col-sm-4">
-              <img src={profileImg} className="photo" alt="Avatar" />
+            <span 
+              className="fa-stack fa-1x has-badge available" 
+              data-count="0"
+              onClick={() => AppStore.toggleSidePanelCollapse()}
+            >
+              <i className="fas fa-circle fa-stack-2x" />
+              <img src={UserProfileStore.avatar} className="photo fa-stack-1x" alt="Avatar" />
+            </span>
             </div>
             <div className="col-sm-8 pt-1">
               <div className="name">Joe LoMoglio</div>

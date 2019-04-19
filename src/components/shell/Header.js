@@ -15,6 +15,7 @@ class Header extends Component {
       .fixed-top {
         height: 50px !important;
         padding-right: 5px !important;
+        z-index: 100 !important;;
       }
 
       .chat-icon {
@@ -48,7 +49,7 @@ class Header extends Component {
           fixed="top" 
           bg="dark" 
           variant="dark"
-          style={{ right: AppStore.sidePanelOpen ? "300px" : "0px" }}
+          style={{ right: AppStore.sidePanelOpen ? "300px" : "0px", zIndex: '500' }}
         >
           <Navbar.Brand href="/">
             <strong style={{color: 'white'}}>
