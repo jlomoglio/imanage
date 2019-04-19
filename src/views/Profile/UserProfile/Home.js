@@ -81,8 +81,21 @@ class Home extends Component {
         float: left;
       }
 
+      .icon-lg {
+        font-size: 55px;
+        margin: 20px;
+      }
 
-      .header {
+      .welcome-card {
+        padding: 10px;
+        margin-top: 34px;
+        margin-right: 20px;
+        margin-bottom: 25px;
+        border: 1px solid #ccc;
+      }
+
+
+      .announcements {
         padding: 10px;
         margin-top: 20px;
         margin-bottom: 25px;
@@ -251,7 +264,52 @@ class Home extends Component {
           </div>
 
           <div className="col-sm-8">
-            <div className="header">
+            <div className="welcome-card">
+              <div className="welcome-header center">
+                <h2>Welcome, Joe LoMoglio</h2>
+                <p>
+                  You're looking at iManage, your new tool for work. Here's a quick look 
+                  at some of the things you can do here in iManage.
+                </p>
+                <div className="row">
+                  <div className="col-sm-4 center">
+                    <i className="far fa-calendar-times icon-lg" />
+                    <h6>Request Time Off</h6>
+                    <p>Request time off and check your balances.</p>
+                  </div>
+                  <div className="col-sm-4 center brd-l">
+                    <i className="far fa-id-card icon-lg" />
+                    <h6>Company Directory</h6>
+                    <p>Search for coworkers and their contact info.</p>
+                  </div>
+                  <div className="col-sm-4 center brd-l">
+                    <i className="fas fa-heartbeat icon-lg" />
+                    <h6>Benefits</h6>
+                    <p>See which company benefits you are enrolled in</p>
+                  </div>
+                </div>
+                <hr />
+                <div className="row">
+                  <div className="col-sm-4 center">
+                    <i className="fas fa-graduation-cap icon-lg" />
+                    <h6>Training</h6>
+                    <p>Stay on top of your trainings and certifications.</p>
+                  </div>
+                  <div className="col-sm-4 center brd-l">
+                    <i className="fas fa-bullseye icon-lg" />
+                    <h6>Goals</h6>
+                    <p>Create, track and collaborate on your goals</p>
+                  </div>
+                  <div className="col-sm-4 center brd-l">
+                    <i className="fas fa-mobile-alt icon-lg" />
+                    <h6>Mobile Apps</h6>
+                    <p>iManage is always with you with our soon to be released iOS and Android apps.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="announcements">
               <div className="colleft text-dark"><strong>WHAT'S HAPPENING AT YOUR COMPANY</strong></div>
               <div className="colright text-dark align-right pr-2">Announcements</div>
             </div>
@@ -261,7 +319,7 @@ class Home extends Component {
               ))  
             }
 
-            
+
           </div>
         </div>
 
