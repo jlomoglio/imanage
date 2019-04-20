@@ -37,7 +37,7 @@ class MyInfo extends Component {
       }
 
       hr {
-        color: #1A1817;
+        color: black;
         margin: 0;
         padding: 0;
       }
@@ -55,7 +55,6 @@ class MyInfo extends Component {
         text-align: left !important;
         margin-left: 0px;
         font-size: 14px;
-        border-right: 1px solid #ccc;
  
         .contact-info-card {
           padding: 10px;
@@ -179,6 +178,15 @@ class MyInfo extends Component {
             margin-left: 0;
           }
 
+          li.active:after {
+            position: absolute;
+            width: 100px;
+            content: "";
+            top: 0;
+            margin-left: 0;
+            border-top: 4px solid blue;
+          }
+
           li:hover:after {
             border-top: 4px solid #000;
           }
@@ -246,26 +254,44 @@ class MyInfo extends Component {
           </div> 
 
           {/* RIGHT COL */}
-          <div className="col-xl-9">
+          <div className="col-xl-9 brd-l pl-3">
             {/* PROFILE SUB MENU */}
             <div className="submenu-bar">
               <ul>
-                <li onClick={() => AppStore.setSubSubView('User Profile', 'My Info', 'Personal') }>
+                <li 
+                  className={AppStore.showPersonal ? 'active' : ''}
+                  onClick={() => AppStore.setSubSubView('User Profile', 'My Info', 'Personal') 
+                }>
                   <span>Personal</span>
                 </li>
-                <li onClick={() => AppStore.setSubSubView('User Profile', 'My Info', 'Pay Info') }>
+                <li 
+                  className={AppStore.showPayInfo ? 'active' : ''}
+                  onClick={() => AppStore.setSubSubView('User Profile', 'My Info', 'Pay Info') 
+                }>
                   <span>Pay Info</span>
                 </li>
-                <li onClick={() => AppStore.setSubSubView('User Profile', 'My Info', 'Benefits') }>
+                <li 
+                  className={AppStore.showBenefits ? 'active' : ''}
+                  onClick={() => AppStore.setSubSubView('User Profile', 'My Info', 'Benefits') 
+                }>
                   <span>Benefits</span>
                 </li>
-                <li onClick={() => AppStore.setSubSubView('User Profile', 'My Info', 'Time Off') }>
+                <li 
+                  className={AppStore.showTimeOff ? 'active' : ''}
+                  onClick={() => AppStore.setSubSubView('User Profile', 'My Info', 'Time Off') 
+                }>
                   <span>Time Off</span>
                 </li>
-                <li onClick={() => AppStore.setSubSubView('User Profile', 'My Info', 'Documents') }>
+                <li
+                  className={AppStore.showDocuments ? 'active' : ''} 
+                  onClick={() => AppStore.setSubSubView('User Profile', 'My Info', 'Documents') 
+                }>
                   <span>Documents</span>
                 </li>
-                <li onClick={() => AppStore.setSubSubView('User Profile', 'My Info', 'Files') }>
+                <li
+                  className={AppStore.showFiles ? 'active' : ''} 
+                  onClick={() => AppStore.setSubSubView('User Profile', 'My Info', 'Files') 
+                }>
                   <span>Files</span>
                 </li>
               </ul>

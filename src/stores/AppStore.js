@@ -7,7 +7,7 @@ class AppStore {
   @observable appSubView = 'My Info';
   @observable appSubSubView = "Personal"
   @observable sidebarOpen = true;
-  @observable sidePanelOpen = true; // false
+  @observable sidePanelOpen = false; // false
   @observable profileMenuOpen = false;
   @observable navSubItemOpen = false;
   @observable userStatus = 'Available';
