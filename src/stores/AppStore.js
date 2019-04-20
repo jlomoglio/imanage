@@ -12,6 +12,13 @@ class AppStore {
   @observable navSubItemOpen = false;
   @observable userStatus = 'Available';
 
+  @observable showPersonal = true;
+  @observable showPayInfo = false;
+  @observable showBenefits = false;
+  @observable showTimeOff = false;
+  @observable showDocuments = false;
+  @observable showFiles = false;
+
  
   @action toggleProfileCollapse(view) {
     this.profileMenuOpen = !this.profileMenuOpen
@@ -44,7 +51,7 @@ class AppStore {
   @action setSubView(view, subView) {
     this.appView = view;
     this.appSubView = subView;
-    this.profileMenuOpen = false;
+    this.profileMenuOpen = true;
   }
 
   @action setSubSubView(view, subView, subSubView) {
@@ -52,6 +59,13 @@ class AppStore {
     this.appSubView = subView;
     this.appSubSubView = subSubView;
     this.profileMenuOpen = true;
+
+    subSubView === 'Personal' ? this.showPersonal = true : this.showPersonal = false;
+    subSubView === 'Pay Info' ? this.showPayInfo = true : this.showPayInfo = false;
+    subSubView === 'Benefits' ? this.showBenefits = true : this.showBenefits = false;
+    subSubView === 'Time Off' ? this.showTimeOff = true : this.showTimeOff = false;
+    subSubView === 'Documents' ? this.showDocuments = true : this.showDocuments = false;
+    subSubView === 'Files' ? this.showFiles = true : this.showFiles = false;
   }
 };
 

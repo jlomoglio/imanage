@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import styled from 'styled-components';
 import Home from './Home';
-import MyInfo from '../MyInfo/MyInfo';
+import MyInfo from './MyInfo/MyInfo';
 
 @inject('AppStore', 'UserProfileStore')
 @observer

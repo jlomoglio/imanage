@@ -5,9 +5,10 @@ import styled from 'styled-components';
 
 @inject('UserProfileStore')
 @observer
-class PayInfo extends Component {
+class Benefits extends Component {
   render() {
     const UserProfileStore = this.props.UserProfileStore;
+    const props = this.props;
 
     const Styles = styled.div`
       .view-contents {
@@ -18,9 +19,12 @@ class PayInfo extends Component {
 
     return (
       <Styles>
-        <div className="view-contents row">
+        <div 
+          className="view-contents row"
+          style={{ display: props.show ? 'block' : 'none' }}
+        >
           <div className="col-md-12">
-            <h3>PAY INFO</h3>
+            <h3>BENEFITS</h3>
           </div>
         </div>
       </Styles>
@@ -28,4 +32,4 @@ class PayInfo extends Component {
   };
 };
 
-export default PayInfo;
+export default Benefits;

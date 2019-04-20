@@ -5,9 +5,10 @@ import styled from 'styled-components';
 
 @inject('UserProfileStore')
 @observer
-class Personal extends Component {
+class TimeOff extends Component {
   render() {
     const UserProfileStore = this.props.UserProfileStore;
+    const props = this.props;
 
     const Styles = styled.div`
       .view-contents {
@@ -18,9 +19,12 @@ class Personal extends Component {
 
     return (
       <Styles>
-        <div className="view-contents row">
+        <div 
+          className="view-contents row"
+          style={{ display: props.show ? 'block' : 'none' }}
+        >
           <div className="col-md-12">
-            <h3>FILES</h3>
+            <h3>TIME OFF</h3>
           </div>
         </div>
       </Styles>
@@ -28,4 +32,4 @@ class Personal extends Component {
   };
 };
 
-export default Personal;
+export default TimeOff;

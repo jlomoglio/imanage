@@ -32,7 +32,6 @@ class MyInfo extends Component {
         padding: 0;
       }
 
-
       .center {
         text-align: center;
       }
@@ -183,7 +182,6 @@ class MyInfo extends Component {
           li:hover:after {
             border-top: 4px solid #000;
           }
-
       }
     `;
 
@@ -192,7 +190,6 @@ class MyInfo extends Component {
         <div className="view-contents row">
           {/* LEFT COL */}
           <div className="col-xl-3">
-            
             <div className="wrapper">
               {/* CONTACT INFO CARD */}
               <div className="contact-info-card">
@@ -250,11 +247,10 @@ class MyInfo extends Component {
 
           {/* RIGHT COL */}
           <div className="col-xl-9">
-
-            {/* PROFILE MENU (Keep below Billboard) */}
+            {/* PROFILE SUB MENU */}
             <div className="submenu-bar">
               <ul>
-              <li onClick={() => AppStore.setSubSubView('User Profile', 'My Info', 'Personal') }>
+                <li onClick={() => AppStore.setSubSubView('User Profile', 'My Info', 'Personal') }>
                   <span>Personal</span>
                 </li>
                 <li onClick={() => AppStore.setSubSubView('User Profile', 'My Info', 'Pay Info') }>
@@ -275,42 +271,12 @@ class MyInfo extends Component {
               </ul>
             </div>
 
-            { 
-              AppStore.appView === 'User Profile' && 
-              AppStore.appSubView === 'My Info' && 
-              AppStore.appSubView === 'Personal' && 
-              <Personal />
-            }
-            { 
-              AppStore.appView === 'User Profile' && 
-              AppStore.appSubView === 'My Info' && 
-              AppStore.appSubView === 'Pay Info' && 
-              <PayInfo />
-            }
-            { 
-              AppStore.appView === 'User Profile' && 
-              AppStore.appSubView === 'My Info' && 
-              AppStore.appSubView === 'Benefits' && 
-              <Benefits />
-            }
-            { 
-              AppStore.appView === 'User Profile' && 
-              AppStore.appSubView === 'My Info' && 
-              AppStore.appSubView === 'Time Off' && 
-              <TimeOff />
-            }
-            { 
-              AppStore.appView === 'User Profile' && 
-              AppStore.appSubView === 'My Info' && 
-              AppStore.appSubView === 'Documents' && 
-              <Documents />
-            }
-            { 
-              AppStore.appView === 'User Profile' && 
-              AppStore.appSubView === 'My Info' && 
-              AppStore.appSubSubView === 'Files' && 
-              <Files />
-            }
+            <Personal show={AppStore.showPersonal} />
+            <PayInfo show={AppStore.showPayInfo} />
+            <Benefits show={AppStore.showBenefits} />
+            <TimeOff show={AppStore.showTimeOff} />
+            <Documents show={AppStore.showDocuments} />
+            <Files show={AppStore.showFiles} />
 
           </div>
         </div>
