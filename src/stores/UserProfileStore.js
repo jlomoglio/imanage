@@ -45,8 +45,8 @@ class UserProfileStore {
   @observable userStatus = 'Available';
   @observable showEditBillboardModal = false;
   @observable selectedAvatar = f1;
-  @observable bg = bg1;
-  @observable selectedBg = bg1;
+  @observable bg = bg7;
+  @observable selectedBg = bg7;
 
   @observable avatarSelectorScrollPosition = '';
   @observable bgSelectorScrollPosition = '';
@@ -113,6 +113,11 @@ class UserProfileStore {
   // HOME PAGE
   ////////////////////////////////////////////////////////////
 
+  @observable timeoffCardWidth = '';
+  @observable whosOutCardWidth = '';
+  @observable celebrateCardWidth = '';
+  @observable welcomeCardWidth = '';
+  @observable announcementWidth = '';
   @observable announcements = [
     {
       icon: '',
@@ -151,7 +156,33 @@ class UserProfileStore {
       time: '1 day ago'
     },
   ];
-
+  @observable celebrations = [
+    {
+      avatar: m1,
+      name: 'Antonio James',
+      text: 'April 12th - Happy Birthday!',
+    },
+    {
+      avatar: f3,
+      name: 'Jane Smith',
+      text: 'April 19th - Happy Birthday!',
+    },
+    {
+      avatar: m5,
+      name: 'Jim Blanchard',
+      text: '10 yr Employee Anniversary!',
+    },
+    {
+      avatar: f6,
+      name: 'Amy Jones',
+      text: '30 yr Employee Anniversary!',
+    },
+    {
+      avatar: m9,
+      name: 'Mike Reed',
+      text: 'April 11th - Happy Birthday!',
+    },
+  ]; 
 };
 
 const store = new UserProfileStore();

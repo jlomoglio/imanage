@@ -2,18 +2,11 @@ import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import styled from 'styled-components';
 import AnnouncementCard from '../../../components/UserProfile/AnnouncementCard';
-import m1 from '../../../assets/profile-avatar/m1.png';
-import m2 from '../../../assets/profile-avatar/m2.png';
-import m3 from '../../../assets/profile-avatar/m3.png';
-import m4 from '../../../assets/profile-avatar/m4.png';
-import m5 from '../../../assets/profile-avatar/m5.png';
-import m6 from '../../../assets/profile-avatar/m6.png';
-import m7 from '../../../assets/profile-avatar/m7.png';
-import m8 from '../../../assets/profile-avatar/m8.png';
-import f1 from '../../../assets/profile-avatar/f1.png';
-import f2 from '../../../assets/profile-avatar/f2.png';
-import f3 from '../../../assets/profile-avatar/f3.png';
-import f4 from '../../../assets/profile-avatar/f4.png';
+import CelebrateCard from '../../../components/UserProfile/CelebrateCard';
+import TimeoffCard from '../../../components/UserProfile/TimeoffCard';
+import WhosOutCard from '../../../components/UserProfile/WhosOutCard';
+import WelcomeCard from '../../../components/UserProfile/WelcomeCard';
+
 
 @inject('UserProfileStore')
 @observer
@@ -35,10 +28,7 @@ class Home extends Component {
         text-align: right;
       }
 
-      .time-ago {
-        font-size: 12.5px;
-      }
-
+      
       hr {
         color: #1A1817;
         margin: 0;
@@ -86,15 +76,6 @@ class Home extends Component {
         margin: 20px;
       }
 
-      .welcome-card {
-        padding: 10px;
-        margin-top: 34px;
-        margin-right: 20px;
-        margin-bottom: 25px;
-        border: 1px solid #ccc;
-      }
-
-
       .announcements {
         padding: 10px;
         margin-top: 20px;
@@ -108,221 +89,54 @@ class Home extends Component {
           float: right;
         }
       }
-
-      .timeoff-card {
-        margin-top: 36px;
-        padding: 10px;
-        text-align: center;
-        border: 1px solid #ccc;
-        margin-left: 10px;
-      }
-
-      .whos-out-card, .celebrating-card {
-        margin-top: 36px;
-        padding: 10px;
-        text-align: left !important;
-        border: 1px solid #ccc;
-        margin-left: 10px;
-      }
-
-      .avatar-row {
-        width: 100%;
-
-        .avatar {
-          width: 50px;
-          height: 50px;
-          border-radius: 50%;
-          margin: 8px;
-          border: 2px solid #ccc;
-        }
-      }
     `;
 
     return (
-      <Styles bg={UserProfileStore.bg}>
+      <Styles>
         <div className="view-contents row">
-          <div className="col-sm-4">
-            <div className="timeoff-card row">
-              <div className="col-sm-6">
-                <h5>Vacation</h5>
-                <hr />
-                <h2 className="mt-2"><i className="fas fa-plane-departure" /> 22.7</h2>
-                <span className="md-text bold">HOURS AVAILABLE</span>
-               </div>
-              <div className="col-sm-6 brd-l">
-                <h5>Sick Leave</h5>
-                <hr />
-                <h2 className="mt-2"><i className="fas fa-band-aid" /></h2>
-                <span className="md-text bold">4 DAYS USED (YTD)</span>
-              </div>
-              <button className="btn btn-dark w-100 mt-3"><i className="far fa-calendar-times" /> Request Time Off</button>
-            </div>
-
-            <div className="whos-out-card row mt-3">
-              <div className="col-sm-12">
-                <h5 className="">Who's Out</h5>
-                <span className="sm-text bold">TODAY (3)</span>
-                <br />
-                <div className="avatar-row mt-3 mb-3">
-                  <img src={f1} className="avatar" />
-                  <img src={m1} className="avatar" />
-                  <img src={m3} className="avatar" />
-                </div>
-
-                <span className="sm-text bold">TOMORROW (8)</span>
-                <br />
-                <div className="avatar-row mt-3">
-                  <img src={m1} className="avatar" />
-                  <img src={m2} className="avatar" />
-                  <img src={m3} className="avatar" />
-                  <img src={f1} className="avatar" />
-                  <img src={f3} className="avatar" />
-                  <img src={m6} className="avatar" />
-                  <img src={m7} className="avatar" />
-                  <img src={m8} className="avatar" />
-                </div>
-              </div>
-            </div>
-
-            <div className="celebrating-card row col-sm-12">
-              <h5 className="w-100">Celebrating This Month (5)</h5>
-              <div className="3-col-card row">
-                <div className="col-sm-2">
-                  <img src={m1} className="avatar" alt="avatar" />
-                </div>
-                <div className="col-sm-8">
-                  <div className="pl-3">
-                    <h6 className="mb-0 mt-2">Antonio James</h6>
-                    <span className="sm-text">April 12th - Happy Birthday!</span>
-                  </div>
-                  </div>
-                <div className="col-sm-2">
-                  <i className="fas fa-birthday-cake icon-celeabrate" />
-                </div>
-              </div>
-              <hr />
-              <div className="3-col-card row">
-                <div className="col-sm-2">
-                  <img src={f3} className="avatar" alt="avatar" />
-                </div>
-                <div className="col-sm-8">
-                  <div className="pl-3">
-                    <h6 className="mb-0 mt-2">Jane Smith</h6>
-                    <span className="sm-text">April 19th - Happy Birthday!</span>
-                  </div>
-                  </div>
-                <div className="col-sm-2">
-                  <i className="fas fa-birthday-cake icon-celeabrate" />
-                </div>
-              </div>
-              <hr />
-              <div className="3-col-card row">
-                <div className="col-sm-2">
-                  <img src={m3} className="avatar" alt="avatar" />
-                </div>
-                <div className="col-sm-8">
-                  <div className="pl-3">
-                    <h6 className="mb-0 mt-2">Jim Blanchard</h6>
-                    <span className="sm-text">10 yr Employee Anniversary!</span>
-                  </div>
-                  </div>
-                <div className="col-sm-2">
-                  <i className="fas fa-birthday-cake icon-celeabrate" />
-                </div>
-              </div>
-              <hr />
-              <div className="3-col-card row">
-                <div className="col-sm-2">
-                  <img src={f4} className="avatar" alt="avatar" />
-                </div>
-                <div className="col-sm-8">
-                  <div className="pl-3">
-                    <h6 className="mb-0 mt-2">Amy Jones</h6>
-                    <span className="sm-text">30 yr Employee Anniversary!</span>
-                  </div>
-                  </div>
-                <div className="col-sm-2">
-                  <i className="fas fa-birthday-cake icon-celeabrate" />
-                </div>
-              </div>
-              <hr />
-              <div className="3-col-card row">
-                <div className="col-sm-2">
-                  <img src={m4} className="avatar" alt="avatar" />
-                </div>
-                <div className="col-sm-8">
-                  <div className="pl-3">
-                    <h6 className="mb-0 mt-2">Mike Reed</h6>
-                    <span className="sm-text">April 11th - Happy Birthday!</span>
-                  </div>
-                  </div>
-                <div className="col-sm-2">
-                  <i className="fas fa-birthday-cake icon-celeabrate" />
-                </div>
-              </div>
-            </div>
+          {/* LEFT COL */}
+          <div className="col-md-12 order-2 order-md-2 col-xl-4">
+            <TimeoffCard />
+            <WhosOutCard />
+            <CelebrateCard />
           </div>
 
-          <div className="col-sm-8">
-            <div className="welcome-card">
-              <div className="welcome-header center">
-                <h2>Welcome, Joe LoMoglio</h2>
-                <p>
-                  You're looking at iManage, your new tool for work. Here's a quick look 
-                  at some of the things you can do here in iManage.
-                </p>
-                <div className="row">
-                  <div className="col-sm-4 center">
-                    <i className="far fa-calendar-times icon-lg" />
-                    <h6>Request Time Off</h6>
-                    <p>Request time off and check your balances.</p>
-                  </div>
-                  <div className="col-sm-4 center brd-l">
-                    <i className="far fa-id-card icon-lg" />
-                    <h6>Company Directory</h6>
-                    <p>Search for coworkers and their contact info.</p>
-                  </div>
-                  <div className="col-sm-4 center brd-l">
-                    <i className="fas fa-heartbeat icon-lg" />
-                    <h6>Benefits</h6>
-                    <p>See which company benefits you are enrolled in</p>
-                  </div>
-                </div>
-                <hr />
-                <div className="row">
-                  <div className="col-sm-4 center">
-                    <i className="fas fa-graduation-cap icon-lg" />
-                    <h6>Training</h6>
-                    <p>Stay on top of your trainings and certifications.</p>
-                  </div>
-                  <div className="col-sm-4 center brd-l">
-                    <i className="fas fa-bullseye icon-lg" />
-                    <h6>Goals</h6>
-                    <p>Create, track and collaborate on your goals</p>
-                  </div>
-                  <div className="col-sm-4 center brd-l">
-                    <i className="fas fa-mobile-alt icon-lg" />
-                    <h6>Mobile Apps</h6>
-                    <p>iManage is always with you with our soon to be released iOS and Android apps.</p>
-                  </div>
-                </div>
+          {/* RIGHT COL */}
+          <div className="col-md-12 order-1 order-md-1 col-xl-8">
+            
+            {/* WELCOME CARD */}
+            <div className="row mr-1 ml-2">
+              <div className="col-sm-12">
+                <WelcomeCard />
               </div>
             </div>
 
-            <div className="announcements">
-              <div className="colleft text-dark"><strong>WHAT'S HAPPENING AT YOUR COMPANY</strong></div>
-              <div className="colright text-dark align-right pr-2">Announcements</div>
-            </div>
-            {
-              UserProfileStore.announcements.map((ann, index) => (
-                <AnnouncementCard avatar={ann.avatar} icon={ann.icon} text={ann.text} time={ann.time} />
-              ))  
-            }
-
-
+            {/* ANNOUNCEMENTS */}
+            <div className="row mr-3">
+              <div className="col-sm-12">
+                <div className="announcements ml-3">
+                  <div className="colleft text-dark"><
+                    strong>WHAT'S HAPPENING AT YOUR COMPANY</strong>
+                  </div>
+                  <div className="colright text-dark align-right">
+                    Announcements
+                  </div>
+                </div>
+                {
+                  UserProfileStore.announcements.map((ann, index) => (
+                    <AnnouncementCard 
+                      key={index} 
+                      avatar={ann.avatar} 
+                      icon={ann.icon} 
+                      text={ann.text} 
+                      time={ann.time} 
+                    />
+                  ))  
+                }
+              </div>
+            </div>  
           </div>
         </div>
-
       </Styles>
     );
   };

@@ -33,7 +33,6 @@ class View extends Component {
         margin: 0;
         padding: 0;
         overflow-x: hidden;
-        padding-bottom: 30px;
       }
     `;
 

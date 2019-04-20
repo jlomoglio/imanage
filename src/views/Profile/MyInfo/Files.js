@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 @inject('UserProfileStore')
 @observer
-class Documents extends Component {
+class Files extends Component {
   render() {
     const UserProfileStore = this.props.UserProfileStore;
 
@@ -20,7 +20,7 @@ class Documents extends Component {
       <Styles>
         <div className="view-contents row">
           <div className="col-md-12">
-            <h3>DOCUMENTS</h3>
+            <h3>FILES</h3>
           </div>
         </div>
       </Styles>
@@ -28,4 +28,4 @@ class Documents extends Component {
   };
 };
 
-export default Documents;
+export default Files;

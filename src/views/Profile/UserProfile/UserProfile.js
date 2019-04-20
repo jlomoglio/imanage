@@ -4,11 +4,12 @@ import styled from 'styled-components';
 import Home from './Home';
 import MyInfo from '../MyInfo/MyInfo';
 
-@inject('UserProfileStore')
+@inject('AppStore', 'UserProfileStore')
 @observer
 class UserProfile extends Component {
   render() {
     const UserProfileStore = this.props.UserProfileStore;
+    const AppStore = this.props.AppStore;
 
     const Styles = styled.div`
       .view-contents {
@@ -51,7 +52,7 @@ class UserProfile extends Component {
             }
 
             li span:hover {
-              background-color: #111111;
+              color: blue;
             }
         }
 
@@ -73,7 +74,7 @@ class UserProfile extends Component {
             border: 2px solid #000;
             z-index: 5;
             position: absolute;
-            top: 40px;
+            top: 30px;
             left: 45px;
           }
 
@@ -117,6 +118,7 @@ class UserProfile extends Component {
       <Styles bg={UserProfileStore.bg}>
         <div className="view-contents">
           
+          {/* BILLBOARD */}
           <div className="profile-billboard row">
             <div className="col-sm-12">
               <img src={UserProfileStore.avatar} className="avatar" alt="avatar" />
@@ -133,19 +135,34 @@ class UserProfile extends Component {
             </div>
           </div>
 
+          {/* PROFILE MENU (Keep below Billboard) */}
           <div className="profile-menu">
             <ul>
-              <li><span>Home</span></li>
-              <li><span>My Info</span></li>
-              <li><span>My Team</span></li>
-              <li><span>Job Openings</span></li>
-              <li><span>Reports</span></li>
-              <li><span>Files</span></li>
+              <li onClick={() => AppStore.setSubView('User Profile', 'Home') }>
+                <span>Home</span>
+              </li>
+              <li onClick={() => AppStore.setSubView('User Profile', 'My Info') }>
+                <span>My Info</span>
+              </li>
+              <li onClick={() => AppStore.setSubView('User Profile', 'My Team') }>
+                <span>My Team</span>
+              </li>
+              <li onClick={() => AppStore.setSubView('User Profile', 'Job Openings') }>
+                <span>Job Openings</span>
+              </li>
+              <li onClick={() => AppStore.setSubView('User Profile', 'Reports') }>
+                <span>Reports</span>
+              </li>
+              <li onClick={() => AppStore.setSubView('User Profile', 'Files') }>
+                <span>Files</span>
+              </li>
             </ul>
           </div>
-          </div>
+        </div>
 
-          <Home />
+          { AppStore.appSubView === 'Home' && <Home /> }
+          { AppStore.appSubView === 'My Info' && <MyInfo /> }
+          
       </Styles>
     );
   };

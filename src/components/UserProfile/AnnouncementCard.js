@@ -11,15 +11,18 @@ class AnnouncementCard extends Component {
 
     const Styles = styled.div`
       .announcement-card {
-        max-width: 100%;
-        min-height: 100px;
-        margin-right: 20px;
-        margin-left: 12px;
+        margin-left: 20px;
         margin-bottom: 15px;
         border: 1px solid #ccc;
-        padding: 15px;
-        -webkit-box-shadow: 6px 4px 10px -2px rgba(0,0,0,0.53); 
-        box-shadow: 6px 4px 10px -2px rgba(0,0,0,0.53);
+
+        .time-ago {
+          font-size: 12.5px;
+        }
+
+
+        .col-sm-2 {
+          max-width: 80px !important;
+        }
 
         .text {
           padding-left: 15px;
@@ -58,26 +61,38 @@ class AnnouncementCard extends Component {
             margin-right: -0.25em;
           }           
         }
+
+        .border {
+          border: 1px solid black;
+        }
+
+        .center {
+          text-align: center;
+        }
       }
     `;
 
     return (
       <Styles>
-        <div className="announcement-card row">
-          <div className="col-sm-1 text-dark">
-            <div className="avatar">
-              {
-                props.avatar && <img src={props.avatar} className="img" alt="avatar" />
-              }
-              {
-                props.icon && <i className={`${props.icon} icon`} alt="avatar" />
-              }
+        <div className="announcement-card">
+          <div className="row">
+            <div className="col-sm-2 text-dark">
+              <div className="avatar">
+                {
+                  props.avatar && <img src={props.avatar} className="img" alt="avatar" />
+                }
+                {
+                  props.icon && <i className={`${props.icon} icon `} alt="avatar" />
+                }
+              </div>
             </div>
-          </div>
-          <div className="col-sm-11">
-            <span className="text-dark text">{ props.text }</span>
-            <br />
-            <span className="time-ago text">{ props.time }</span>
+            <div className="col-sm-10 pt-2">
+              <p className="text-dark text m-0 p-0">
+                { props.text }
+                <br />
+                { props.time }
+              </p>
+            </div>
           </div>
         </div>
       </Styles>

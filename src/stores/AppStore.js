@@ -4,9 +4,10 @@ class AppStore {
   @observable appTitle = 'iManage';
   @observable appVersion = 'v0.0.1';
   @observable appView = 'User Profile';
-  @observable appSubView = '';
+  @observable appSubView = 'My Info';
+  @observable appSubSubView = "Personal"
   @observable sidebarOpen = true;
-  @observable sidePanelOpen = false;
+  @observable sidePanelOpen = true; // false
   @observable profileMenuOpen = false;
   @observable navSubItemOpen = false;
   @observable userStatus = 'Available';
@@ -44,6 +45,13 @@ class AppStore {
     this.appView = view;
     this.appSubView = subView;
     this.profileMenuOpen = false;
+  }
+
+  @action setSubSubView(view, subView, subSubView) {
+    this.appView = view;
+    this.appSubView = subView;
+    this.appSubSubView = subSubView;
+    this.profileMenuOpen = true;
   }
 };
 
