@@ -3,6 +3,7 @@ import { inject, observer } from 'mobx-react';
 import styled from 'styled-components';
 import Shell from './components/shell/Shell'
 import EditImageModal from './components/EditImageModal/EditImageModal';
+import PayInfoModal from './components/UserProfile/PayInfoModal';
 
 @inject('UserProfileStore')
 @observer
@@ -16,6 +17,7 @@ class App extends Component {
       <Styles>
         <Shell />
         <EditImageModal />
+        <PayInfoModal />
       </Styles>
     );
   }

@@ -43,11 +43,13 @@ class UserProfileStore {
   @observable avatar = f1;
   @observable billboardBg = '';
   @observable userStatus = 'Available';
+
   @observable showEditBillboardModal = false;
   @observable selectedAvatar = f1;
   @observable bg = bg7;
   @observable selectedBg = bg7;
 
+  
   @observable avatarSelectorScrollPosition = '';
   @observable bgSelectorScrollPosition = '';
 
@@ -78,7 +80,7 @@ class UserProfileStore {
     this.showEditBillboardModal = false;
   }
 
-  // Show Modal
+  // Show Edit Billboard Modal
   @action showEditBillBoardModal() {
     this.showEditBillboardModal = true;
   }
@@ -108,6 +110,7 @@ class UserProfileStore {
     // Close Modal
     this.showEditBillboardModal = !this.showEditBillboardModal;
   }
+
 
   ////////////////////////////////////////////////////////////
   // HOME PAGE
@@ -183,6 +186,123 @@ class UserProfileStore {
       text: 'April 11th - Happy Birthday!',
     },
   ]; 
+
+  ////////////////////////////////////////////////////////////
+  // MY INFO: Pay Info
+  ////////////////////////////////////////////////////////////
+
+  @observable payInfoModalShown = false;
+
+  @observable mainchartData = [
+    { key: 'Your Cash', value: 61, color: '#E64C65' },
+    { key: 'Taxes', value: 28, color: '#11A8AB' },
+    { key: 'Deductions', value: 11, color: '#4FC4F6' }
+  ];
+
+
+  @observable paystubData = [
+    {
+      for: 'For Mar 1 - Mar 15',
+      paydate: 'March 15th, 2019',
+      paystub: {
+        gross: '5872.68',
+        tax: '1084.35',
+        deductions: '674.12',
+        net: '4114.21',
+        ytdNet: '32913.68'
+      }
+    },
+    {
+      for: 'For Mar 15 - Mar 31',
+      paydate: 'March 15th, 2019',
+      paystub: {
+        gross: '5872.68',
+        tax: '1084.35',
+        deductions: '674.12',
+        net: '4114.21',
+        ytdNet: '28799.47'
+      }
+    },
+
+    {
+      for: 'For Apr 1 - Apr 15',
+      paydate: 'April 15th, 2019',
+      paystub: {
+        gross: '5872.68',
+        tax: '1084.35',
+        deductions: '674.12',
+        net: '4114.21',
+        ytdNet: '24685.26'
+      }
+    },
+    {
+      for: 'For Apr 15 - Apr 31',
+      paydate: 'April 30th, 2019',
+      paystub: {
+        gross: '5872.68',
+        tax: '1084.35',
+        deductions: '674.12',
+        net: '4114.21',
+        ytdNet: '20571.05'
+      }
+    },
+
+    {
+      for: 'For May 1 - May 15',
+      paydate: 'May 15th, 2019',
+      paystub: {
+        gross: '5872.68',
+        tax: '1084.35',
+        deductions: '674.12',
+        net: '4114.21',
+        ytdNet: '16456.84'
+      }
+    },
+    {
+      for: 'For May 15 - May 31',
+      paydate: 'May 30th, 2019',
+      paystub: {
+        gross: '5872.68',
+        tax: '1084.35',
+        deductions: '674.12',
+        net: '4114.21',
+        ytdNet: '12342.63'
+      }
+    },
+
+    {
+      for: 'For Jun 1 - Jun 15',
+      paydate: 'June 15th, 2019',
+      paystub: {
+        gross: '5872.68',
+        tax: '1084.35',
+        deductions: '674.12',
+        net: '4114.21',
+        ytdNet: '8228.42'
+      }
+    },
+    {
+      for: 'For Jun 15 - Jun 31',
+      paydate: 'June 30th, 2019',
+      paystub: {
+        gross: '5872.68',
+        tax: '1084.35',
+        deductions: '674.12',
+        net: '4114.21',
+        ytdNet: '4114.21'
+      }
+    },
+  ];
+
+  // Show PayInfo Modal
+  @action showPayInfoModal() {
+    this.payInfoModalShown = true;
+  }
+
+  // Close PayInfo Modal
+  @action closePayInfoModal() {
+    this.payInfoModalShown = !this.payInfoModalShown;
+  }
 };
 
 const store = new UserProfileStore();

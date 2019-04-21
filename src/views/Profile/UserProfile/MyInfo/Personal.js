@@ -7,7 +7,7 @@ import { Form, Row, Col } from 'react-bootstrap';
 @observer
 class Personal extends Component {
   render() {
-    const UserProfileStore = this.props.UserProfileStore;
+    //const UserProfileStore = this.props.UserProfileStore;
     const props = this.props;
 
     const Styles = styled.div`
@@ -15,15 +15,15 @@ class Personal extends Component {
         padding: 0px;
         margin-top: 0px;
 
-        hr {
-          border-top: 2px solid darkgray;
-          width: 97%;
-        }
-
         .label {
           color: blue;
           font-size: 12.5px;
           font-weight: 400;
+        }
+        
+        hr {
+          border-top: 1px solid #ccc;
+          width: 100%;
         }
 
         input[type="date"] {
@@ -52,8 +52,8 @@ class Personal extends Component {
           style={{ display: props.show ? 'block' : 'none' }}
         >
           <h5><i className="fas fa-address-card" /> Personal</h5>
-          <hr className="mb-3" />
           <Row>
+            <hr className="mb-3" />
             <Col lg={5}>
               <div className="label pb-2">Basic Information</div>
               <Form>
@@ -313,11 +313,12 @@ class Personal extends Component {
             </Col>
             <Col lg={2}></Col>
           </Row>
-          <hr className="mb-3 mt-3" />
+          
           <Row>
+            <hr className="mb-3 mt-3" />
             <Col sm={12} className="buttons mb-3">
               <button className="float-right btn btn-outline-dark mr-4 ml-2">Save</button>
-              <button className="float-right btn btn-outline-danger">Cancel</button>
+              <button className="float-right btn btn-outline-secondary">Cancel</button>
             </Col>
           </Row>
         </div>

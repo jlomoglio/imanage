@@ -5,15 +5,15 @@ class AppStore {
   @observable appVersion = 'v0.0.1';
   @observable appView = 'User Profile';
   @observable appSubView = 'My Info';
-  @observable appSubSubView = "Personal"
-  @observable sidebarOpen = true;
+  @observable appSubSubView = "Pay Info"
+  @observable sidebarOpen = true; // true
   @observable sidePanelOpen = false; // false
   @observable profileMenuOpen = false;
   @observable navSubItemOpen = false;
   @observable userStatus = 'Available';
 
-  @observable showPersonal = true;
-  @observable showPayInfo = false;
+  @observable showPersonal = false; // true
+  @observable showPayInfo = true; // false
   @observable showBenefits = false;
   @observable showTimeOff = false;
   @observable showDocuments = false;
