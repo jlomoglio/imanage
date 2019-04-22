@@ -4,8 +4,8 @@ class AppStore {
   @observable appTitle = 'iManage';
   @observable appVersion = 'v0.0.1';
   @observable appView = 'User Profile';
-  @observable appSubView = 'My Info';
-  @observable appSubSubView = "Pay Info"
+  @observable appSubView = 'Home';
+  @observable appSubSubView = "Time Off" // Personal
   @observable sidebarOpen = true; // true
   @observable sidePanelOpen = false; // false
   @observable profileMenuOpen = false;
@@ -13,10 +13,9 @@ class AppStore {
   @observable userStatus = 'Available';
 
   @observable showPersonal = false; // true
-  @observable showPayInfo = true; // false
+  @observable showPayInfo = false; // false
   @observable showBenefits = false;
-  @observable showTimeOff = false;
-  @observable showDocuments = false;
+  @observable showTimeOff = true;
   @observable showFiles = false;
 
  

@@ -45,14 +45,19 @@ class UserProfile extends Component {
 
             li span {
               display: block;
-              color: white;
+              color: #ccc;
               text-align: center;
               padding: 16px;
               text-decoration: none;
             }
 
             li span:hover {
-              color: blue;
+              color: white;
+            }
+
+            li span.active {
+              color: white;
+              font-weight: bold;
             }
         }
 
@@ -139,22 +144,16 @@ class UserProfile extends Component {
           <div className="profile-menu">
             <ul>
               <li onClick={() => AppStore.setSubView('User Profile', 'Home') }>
-                <span>Home</span>
+                <span className={`${AppStore.appSubView === 'Home' ? 'active' : '' }`}>Home</span>
               </li>
               <li onClick={() => AppStore.setSubView('User Profile', 'My Info') }>
-                <span>My Info</span>
+                <span className={`${AppStore.appSubView === 'My Info' ? 'active' : ''}`}>My Info</span>
               </li>
               <li onClick={() => AppStore.setSubView('User Profile', 'My Team') }>
-                <span>My Team</span>
+                <span className={`${AppStore.appSubView === 'My Team' ? 'active' : ''}`}>My Team</span>
               </li>
               <li onClick={() => AppStore.setSubView('User Profile', 'Job Openings') }>
-                <span>Job Openings</span>
-              </li>
-              <li onClick={() => AppStore.setSubView('User Profile', 'Reports') }>
-                <span>Reports</span>
-              </li>
-              <li onClick={() => AppStore.setSubView('User Profile', 'Files') }>
-                <span>Files</span>
+                <span className={`${AppStore.appSubView === 'Job Openings' ? 'active' : ''}`}>Job Openings</span>
               </li>
             </ul>
           </div>

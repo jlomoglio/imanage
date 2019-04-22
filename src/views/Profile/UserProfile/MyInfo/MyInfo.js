@@ -5,7 +5,6 @@ import Personal from './Personal';
 import PayInfo from './PayInfo';
 import Benefits from './Benefits';
 import TimeOff from './Timeoff';
-import Documents from './Documents';
 import Files from './Files';
 
 @inject('AppStore', 'UserProfileStore')
@@ -283,12 +282,6 @@ class MyInfo extends Component {
                   <span>Time Off</span>
                 </li>
                 <li
-                  className={AppStore.showDocuments ? 'active' : ''} 
-                  onClick={() => AppStore.setSubSubView('User Profile', 'My Info', 'Documents') 
-                }>
-                  <span>Documents</span>
-                </li>
-                <li
                   className={AppStore.showFiles ? 'active' : ''} 
                   onClick={() => AppStore.setSubSubView('User Profile', 'My Info', 'Files') 
                 }>
@@ -301,7 +294,6 @@ class MyInfo extends Component {
             <PayInfo show={AppStore.showPayInfo} />
             <Benefits show={AppStore.showBenefits} />
             <TimeOff show={AppStore.showTimeOff} />
-            <Documents show={AppStore.showDocuments} />
             <Files show={AppStore.showFiles} />
 
           </div>

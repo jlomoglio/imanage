@@ -303,6 +303,60 @@ class UserProfileStore {
   @action closePayInfoModal() {
     this.payInfoModalShown = !this.payInfoModalShown;
   }
+
+
+
+  ////////////////////////////////////////////////////////////
+  // FILES
+  ////////////////////////////////////////////////////////////
+
+  @observable fileList = [
+    {
+      type: 'word',
+      name: '2019 Employee Handbook',
+      created: '02/23/2019'
+    },
+    {
+      type: 'pdf',
+      name: '2019 Form W-4',
+      created: '02/23/2019'
+    },
+    {
+      type: 'alt',
+      name: 'Accident Injury Report',
+      created: '02/23/2019'
+    },
+    {
+      type: 'pdf',
+      name: 'Disciplainary Action Form',
+      created: '02/23/2019'
+    },
+    {
+      type: 'excel',
+      name: 'Expense Reimbursement Form',
+      created: '02/23/2019'
+    },
+    {
+      type: 'pdf',
+      name: 'Form 1099',
+      created: '02/23/2019'
+    },
+    {
+      type: 'word',
+      name: 'Harassment Policy 10-2018',
+      created: '02/23/2019'
+    },
+    {
+      type: 'pdf',
+      name: 'HIPPA Privacy Rules',
+      created: '02/23/2019'
+    },
+    {
+      type: 'powerpoint',
+      name: 'New Employee Onboarding',
+      created: '02/23/2019'
+    },
+  ];
 };
 
 const store = new UserProfileStore();
