@@ -12,6 +12,7 @@ class PayInfo extends Component {
   render() {
     const UserProfileStore = this.props.UserProfileStore;
     const props = this.props;
+    let idx = Math.random();
 
     const Styles = styled.div`
       .view-contents {
@@ -333,16 +334,18 @@ class PayInfo extends Component {
                   </div>
                   <div className="earnings-card">
                     <Table>
-                      <tr>
-                        <td className="bld">REGULAR:</td>
-                        <td>40.0 HRS</td>
-                        <td>$45.00 HR</td>
-                      </tr>
-                      <tr>
-                        <td className="bld">VACTION:</td>
-                        <td>0.0 HRS</td>
-                        <td>$45.00 HR</td>
-                      </tr>
+                      <tbody>
+                        <tr>
+                          <td className="bld">REGULAR:</td>
+                          <td>40.0 HRS</td>
+                          <td>$45.00 HR</td>
+                        </tr>
+                        <tr>
+                          <td className="bld">VACTION:</td>
+                          <td>0.0 HRS</td>
+                          <td>$45.00 HR</td>
+                        </tr>
+                      </tbody>
                     </Table>
                   </div>
                   <div className="paycheck-amount-card">
@@ -446,13 +449,13 @@ class PayInfo extends Component {
                 <tbody>
                   {
                     UserProfileStore.paystubData.map((data, index) => (
-                      <tr>
-                        <td>{ data.paydate }</td>
-                        <td>${ formatCurrency(data.paystub.gross) }</td>
-                        <td>${ formatCurrency(data.paystub.tax) }</td>
-                        <td>${ formatCurrency(data.paystub.deductions) }</td>
-                        <td>${ formatCurrency(data.paystub.net) }</td>
-                        <td>${ formatCurrency(data.paystub.ytdNet) }</td>
+                      <tr key={`${index}_${idx}`}>
+                        <td key={`${idx}-${data.paydate}`}>{ data.paydate }</td>
+                        <td key={`${idx}-${data.paystub.gross}`}>${ formatCurrency(data.paystub.gross) }</td>
+                        <td key={`${idx}-${data.paystub.tax}`}>${ formatCurrency(data.paystub.tax) }</td>
+                        <td key={`${idx}-${data.paystub.deductions}`}>${ formatCurrency(data.paystub.deductions) }</td>
+                        <td key={`${index}-${data.paystub.net}`}>${ formatCurrency(data.paystub.net) }</td>
+                        <td key={`${idx}-${data.paystub.ytdNet}`}>${ formatCurrency(data.paystub.ytdNet) }</td>
                       </tr>
                     ))
                   }
@@ -466,31 +469,33 @@ class PayInfo extends Component {
               <h5 className="ml-3">Direct Deposit</h5>
               <hr />
               <Table>
-                <tr>
-                  <td rowspan="2" style={{ maxWidth: '30px' }}>
-                    <div className="numcircle">1</div>
-                    <div className="vline"></div>
-                    <div className="numcircle">2</div>
-                  </td>
-                  <td style={{ verticalAlign: 'middle', maxWidth: '30px' }}>
-                    <img src={boaIcon} className="icon" alt="" />
-                  </td>
-                  <td>
-                    <div className="mt-3">
-                      <span className="bld">$1,000 of each check</span> goes to Bank of America Checking xxx-xx-1633
-                    </div>
-                   </td>
-                </tr>
-                <tr>
-                  <td style={{ maxWidth: '30px' }}>
-                    <img src={wellsFargoIcon} className="icon" alt="" />
-                  </td>
-                  <td>
-                    <div className="mt-1">
-                      <span className="bld">100% of remaing amount</span> goes to Wells Fargo Checking xxx-xx-0867
-                    </div>
-                  </td>
-                </tr>
+                <tbody>
+                  <tr>
+                    <td rowSpan="2" style={{ maxWidth: '30px' }}>
+                      <div className="numcircle">1</div>
+                      <div className="vline"></div>
+                      <div className="numcircle">2</div>
+                    </td>
+                    <td style={{ verticalAlign: 'middle', maxWidth: '30px' }}>
+                      <img src={boaIcon} className="icon" alt="" />
+                    </td>
+                    <td>
+                      <div className="mt-3">
+                        <span className="bld">$1,000 of each check</span> goes to Bank of America Checking xxx-xx-1633
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style={{ maxWidth: '30px' }}>
+                      <img src={wellsFargoIcon} className="icon" alt="" />
+                    </td>
+                    <td>
+                      <div className="mt-1">
+                        <span className="bld">100% of remaing amount</span> goes to Wells Fargo Checking xxx-xx-0867
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
               </Table>
               <hr />
               <p className="pl-2 pt-1">You'll receive a paper check with any remaing balance.</p>

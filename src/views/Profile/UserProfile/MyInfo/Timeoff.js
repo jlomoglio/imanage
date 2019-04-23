@@ -142,11 +142,11 @@ class TimeOff extends Component {
                     <h6 className="w-100 mb-3">Select dates:</h6>
                     <div className="form-row">
                       <div className="form-group col-md-6">
-                        <label htmlhtmlFor="inputEmail4">From</label>
+                        <label htmlFor="inputEmail4">From</label>
                         <input type="date" className="form-control" />
                       </div>
                         <div className="form-group col-md-6">
-                        <label htmlhtmlFor="inputPassword4">To</label>
+                        <label htmlFor="inputPassword4">To</label>
                           <input type="date" className="form-control" />
                       </div>
                     </div>
@@ -161,13 +161,13 @@ class TimeOff extends Component {
                     <h6 className="w-100 mb-3">About Your Leave:</h6>
                     <div className="form-row w-100">
                       <div className="form-group w-50">
-                        <label htmlhtmlFor="inputEmail4">Title</label>
+                        <label htmlFor="inputEmail4">Title</label>
                         <input type="text" className="form-control" />
                       </div>
                     </div>
                     <div className="form-row w-100">
                       <div className="form-group w-100">
-                        <label htmlhtmlFor="inputEmail4">Details</label>
+                        <label htmlFor="inputEmail4">Details</label>
                         <textarea type="date" className="form-control" />
                       </div>
                       <button className="btn btn-secondary mt-2 ml-1">Submit Request</button>
