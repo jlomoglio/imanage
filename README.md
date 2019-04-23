@@ -1,6 +1,6 @@
 # iManage 
 
-<img src="imanage.png" />
+<img src="imanage.PNG" />
 
 This is a project I created to learn react. Its an Enterprise Development Team Managent Tool and Comapny Portal.
 
