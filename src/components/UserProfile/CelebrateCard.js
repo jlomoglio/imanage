@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import styled from 'styled-components';
-import m1 from '../../assets/profile-avatar/m1.png';
-import f3 from '../../assets/profile-avatar/f3.png';
-import m3 from '../../assets/profile-avatar/m3.png';
-import m4 from '../../assets/profile-avatar/m4.png';
-import f4 from '../../assets/profile-avatar/f4.png';
+
 
 @inject('UserProfileStore')
 @observer
 class CelebrateCard extends Component {
 
   componentDidMount() {
-    let celeabrateCardWidth = this.elDiv.offsetWidth;
+    //let celeabrateCardWidth = this.elDiv.offsetWidth;
     console.log(this.elDiv.offsetWidth)
     this.props.UserProfileStore.celebrateCardWidth = this.elDiv.offsetWidth;
   }
@@ -38,8 +34,6 @@ class CelebrateCard extends Component {
       }
         
     `;
-
-    let elDiv;
 
     return (
       <Styles>

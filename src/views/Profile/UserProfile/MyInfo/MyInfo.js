@@ -11,7 +11,7 @@ import Files from './Files';
 @observer
 class MyInfo extends Component {
   render() {
-    const UserProfileStore = this.props.UserProfileStore;
+    //const UserProfileStore = this.props.UserProfileStore;
     const AppStore = this.props.AppStore;
 
     const Styles = styled.div`

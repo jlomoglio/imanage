@@ -28,7 +28,7 @@ const ChatPersonList = inject('ChatStore')(observer(props => {
         <div className="chat-section-text">CHAT GROUPS</div>
         {
           ChatStore.chatGroups.map((group, index) => (
-            <ChatGroupItem label={group} />
+            <ChatGroupItem key={index} label={group} />
           ))
         }
         

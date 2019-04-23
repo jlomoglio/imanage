@@ -14,7 +14,7 @@ import f3 from '../../assets/profile-avatar/f3.png';
 @observer
 class WhosOutCard extends Component {
   componentDidMount() {
-    let whosOutCardWidth = this.elDiv.offsetWidth;
+    //let whosOutCardWidth = this.elDiv.offsetWidth;
     this.props.UserProfileStore.whosOutCardWidth = this.elDiv.offsetWidth;
   }
 
@@ -55,8 +55,6 @@ class WhosOutCard extends Component {
       }
     `;
 
-    let elDiv;
-
     return (
       <Styles>
         <div 
@@ -74,22 +72,22 @@ class WhosOutCard extends Component {
               <span className="sm-text bold">TODAY (3)</span>
               <br />
               <div className="avatar-row mt-3 mb-3">
-                <img src={f1} className="avatar" />
-                <img src={m1} className="avatar" />
-                <img src={m3} className="avatar" />
+                <img src={f1} className="avatar" alt="" />
+                <img src={m1} className="avatar" alt="" />
+                <img src={m3} className="avatar" alt="" />
               </div>
 
               <span className="sm-text bold">TOMORROW (8)</span>
               <br />
               <div className="avatar-row mt-3">
-                <img src={m1} className="avatar" />
-                <img src={m2} className="avatar" />
-                <img src={m3} className="avatar" />
-                <img src={f1} className="avatar" />
-                <img src={f3} className="avatar" />
-                <img src={m6} className="avatar" />
-                <img src={m7} className="avatar" />
-                <img src={m8} className="avatar" />
+                <img src={m1} className="avatar" alt="" />
+                <img src={m2} className="avatar" alt="" />
+                <img src={m3} className="avatar" alt="" />
+                <img src={f1} className="avatar" alt="" />
+                <img src={f3} className="avatar" alt="" />
+                <img src={m6} className="avatar" alt="" />
+                <img src={m7} className="avatar" alt="" />
+                <img src={m8} className="avatar" alt="" />
               </div>
             </div>
           </div>

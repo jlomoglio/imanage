@@ -307,7 +307,7 @@ class UserProfileStore {
 
 
   ////////////////////////////////////////////////////////////
-  // FILES
+  // MY INFO: FILES
   ////////////////////////////////////////////////////////////
 
   @observable fileList = [
@@ -355,6 +355,81 @@ class UserProfileStore {
       type: 'powerpoint',
       name: 'New Employee Onboarding',
       created: '02/23/2019'
+    },
+  ];
+
+  ////////////////////////////////////////////////////////////
+  // JOB POSTING
+  ////////////////////////////////////////////////////////////
+
+  @observable categories = [
+    {
+      label: 'Accounting / Finance',
+      count: '1'
+    },
+    {
+      label: 'Business Management',
+      count: '1'
+    },
+    {
+      label: 'Creative / Design',
+      count: '1'
+    },
+    {
+      label: 'Customer Service',
+      count: '3'
+    },
+    {
+      label: 'Development',
+      count: '10'
+    },
+    {
+      label: 'Engineering',
+      count: '4'
+    },
+    {
+      label: 'Human Resources',
+      count: '1'
+    },
+    {
+      label: 'IT Software Development',
+      count: '1'
+    },
+    {
+      label: 'Legal',
+      count: '1'
+    },
+    {
+      label: 'Logistics',
+      count: '0'
+    },
+    {
+      label: 'Marketing',
+      count: '0'
+    },
+    {
+      label: 'Product / Operations',
+      count: '1'
+    },
+    {
+      label: 'Project Management',
+      count: '1'
+    },
+    {
+      label: 'Quality Assurance',
+      count: '1'
+    },
+    {
+      label: 'Sales',
+      count: '1'
+    },
+    {
+      label: 'Security',
+      count: '1'
+    },
+    {
+      label: 'Warehouse',
+      count: '1'
     },
   ];
 };

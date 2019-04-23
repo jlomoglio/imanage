@@ -3,7 +3,6 @@ import { inject, observer } from 'mobx-react';
 import styled from 'styled-components';
 import { Row, Table } from 'react-bootstrap';
 import DoughnutChart from '../../../../components/UserProfile/DoughnutChart';
-import { relative } from 'path';
 import boaIcon from '../../../../assets/boa-icon.png';
 import wellsFargoIcon from '../../../../assets/wellsfargo-icon.png';
 
@@ -474,7 +473,7 @@ class PayInfo extends Component {
                     <div className="numcircle">2</div>
                   </td>
                   <td style={{ verticalAlign: 'middle', maxWidth: '30px' }}>
-                    <img src={boaIcon} className="icon" />
+                    <img src={boaIcon} className="icon" alt="" />
                   </td>
                   <td>
                     <div className="mt-3">
@@ -484,7 +483,7 @@ class PayInfo extends Component {
                 </tr>
                 <tr>
                   <td style={{ maxWidth: '30px' }}>
-                    <img src={wellsFargoIcon} className="icon" />
+                    <img src={wellsFargoIcon} className="icon" alt="" />
                   </td>
                   <td>
                     <div className="mt-1">

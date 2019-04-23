@@ -6,7 +6,7 @@ import styled from 'styled-components';
 @observer
 class AnnouncementCard extends Component {
   render() {
-    const UserProfileStore = this.props.UserProfileStore;
+    //const UserProfileStore = this.props.UserProfileStore;
     const props = this.props;
 
     const Styles = styled.div`

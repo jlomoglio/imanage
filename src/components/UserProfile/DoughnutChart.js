@@ -7,7 +7,7 @@ import { PieChart } from 'react-easy-chart';
 @observer
 class DoughnutChart extends Component {
   render() {
-    const UserProfileStore = this.props.UserProfileStore;
+    //const UserProfileStore = this.props.UserProfileStore;
     const props = this.props;
 
     const Styles = styled.div`

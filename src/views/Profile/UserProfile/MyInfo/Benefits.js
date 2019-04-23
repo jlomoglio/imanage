@@ -8,7 +8,7 @@ import HealthPlanBar from '../../../../components/UserProfile/HealthPlanBar';
 @observer
 class Benefits extends Component {
   render() {
-    const UserProfileStore = this.props.UserProfileStore;
+    //const UserProfileStore = this.props.UserProfileStore;
     const props = this.props;
 
     const Styles = styled.div`

@@ -3,6 +3,7 @@ import { inject, observer } from 'mobx-react';
 import styled from 'styled-components';
 import Home from './Home';
 import MyInfo from './MyInfo/MyInfo';
+import JobOpenings from './JobOpenings';
 
 @inject('AppStore', 'UserProfileStore')
 @observer
@@ -14,7 +15,6 @@ class UserProfile extends Component {
     const Styles = styled.div`
       .view-contents {
         padding: 0px;
-      
 
         hr {
           color: #1A1817;
@@ -149,9 +149,6 @@ class UserProfile extends Component {
               <li onClick={() => AppStore.setSubView('User Profile', 'My Info') }>
                 <span className={`${AppStore.appSubView === 'My Info' ? 'active' : ''}`}>My Info</span>
               </li>
-              <li onClick={() => AppStore.setSubView('User Profile', 'My Team') }>
-                <span className={`${AppStore.appSubView === 'My Team' ? 'active' : ''}`}>My Team</span>
-              </li>
               <li onClick={() => AppStore.setSubView('User Profile', 'Job Openings') }>
                 <span className={`${AppStore.appSubView === 'Job Openings' ? 'active' : ''}`}>Job Openings</span>
               </li>
@@ -159,8 +156,9 @@ class UserProfile extends Component {
           </div>
         </div>
 
-          { AppStore.appSubView === 'Home' && <Home /> }
-          { AppStore.appSubView === 'My Info' && <MyInfo /> }
+        { AppStore.appSubView === 'Home' && <Home /> }
+        { AppStore.appSubView === 'My Info' && <MyInfo /> }
+        { AppStore.appSubView === 'Job Openings' && <JobOpenings />} 
           
       </Styles>
     );

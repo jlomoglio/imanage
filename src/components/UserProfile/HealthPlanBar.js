@@ -7,8 +7,8 @@ import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 @observer
 class HealthPlanBar extends Component {
   render() {
-    const UserProfileStore = this.props.UserProfileStore;
-    const AppStore = this.props.AppStore;
+    //const UserProfileStore = this.props.UserProfileStore;
+    //const AppStore = this.props.AppStore;
     const props = this.props;
 
     const Styles = styled.div`

@@ -6,7 +6,7 @@ import styled from 'styled-components';
 @observer
 class TimeoffCard extends Component {
   componentDidMount() {
-    let timeoffCardWidth = this.elDiv.offsetWidth;
+    //let timeoffCardWidth = this.elDiv.offsetWidth;
     this.props.UserProfileStore.timeoffCardWidth = this.elDiv.offsetWidth;
   }
 
@@ -38,8 +38,6 @@ class TimeoffCard extends Component {
         text-align: center;
       }
     `;
-
-    let elDiv;
 
     return (
       <Styles>

@@ -74,7 +74,6 @@ const ChatGroupWindow = inject('ChatStore')(observer(props => {
     }
   `;
 
-  const currentGroupMessages = ChatStore.currentChatGroup;
 
   return (
     <Styles>
