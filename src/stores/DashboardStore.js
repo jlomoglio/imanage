@@ -2,31 +2,35 @@ import { observable, action, computed } from 'mobx';
 
 class DashboardStore {
   
+  @observable githubView = "This Week";
+  
   @observable viewTitle = 'Dashboard';
-  @observable tasks = [
+  @observable events = [
     {
-      id: 1,
-      label: 'Task 1',
-      completed: true
+      label: 'Group Meeting',
+      when: 'In 32 minutes'
     },
     {
-      id: 2,
-      label: 'Task 2',
-      completed: false
+      label: 'Coffee Break',
+      when: '10:30 AM'
     },
     {
-      id: 3,
-      label: 'Task 3',
-      completed: false
-    }
+      label: 'Public Release',
+      when: '11:00 AM'
+    },
+    {
+      label: 'Lunch',
+      when: '12:30 PM'
+    },
+    {
+      label: 'Development Meeting',
+      when: '3:00 PM'
+    },
   ]
 
-  @action loadSubTitle = () => {
-    return "This sub title is returned from an action in the DashboardStore"
-  }
-
-  @computed get remainingTasks() {
-    return this.tasks.filter(task => !task.completed).length;
+  
+  @action changeGithubView(view) {
+    this.githubView = view;
   }
   
 };

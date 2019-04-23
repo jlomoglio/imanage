@@ -151,12 +151,12 @@ class Profile extends Component {
           display: AppStore.profileMenuOpen ? 'block' : 'none',
           borderBottom: AppStore.profileMenuOpen ? '1px solid #2b2b2b' : ''
         }}>
-          <div className="linkItem" onClick={() => AppStore.setView('User Profile')}>
+          <div className="linkItem" onClick={() => AppStore.setSubSubView('User Profile', 'Home', 'Personal')}>
             <i className="fas fa-user mr-2" /> User Profile
           </div>
-          <div className="linkItem" onClick={() => AppStore.setStatus()}>
+          {/* <div className="linkItem" onClick={() => AppStore.setStatus()}>
             <i className="fas fa-user mr-2" /> Set Status
-          </div>
+          </div> */}
           <div className="linkItem" onClick={() => AppStore.setView('Settings')}>
             <i className="fas fa-cog mr-2" /> Settings
           </div>
