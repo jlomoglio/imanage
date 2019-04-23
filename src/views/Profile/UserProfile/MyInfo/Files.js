@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import styled from 'styled-components';
 import { Row } from 'react-bootstrap';
-import keyIndex from 'react-key-index';
+
 
 @inject('UserProfileStore')
 @observer
@@ -11,8 +11,7 @@ class Files extends Component {
     const UserProfileStore = this.props.UserProfileStore;
     const props = this.props;
 
-    const fileList = keyIndex(UserProfileStore.fileList, 1);
-
+ 
     const Styles = styled.div`
       .view-contents {
         padding: 0px;
@@ -97,13 +96,17 @@ class Files extends Component {
               </thead>
               <tbody>
                 { 
-                  fileList.map((fileList) => (
-                    <tr>
-                      <td><input type="checkbox" className="chkbx" /></td>
-                      <td><i key={fileList._type} className={`fas fa-file-${fileList.type} icon`} /></td>
+                  UserProfileStore.fileList.map((file, index) => (
+                    <tr key={index}>
                       <td>
-                        <h6 key={fileList._name} className="text-primary">{fileList.name }</h6>
-                        <p key={fileList._created} className="mt-n1 mb-0">Created on {fileList.created }</p>
+                        <input type="checkbox" className="chkbx" />
+                      </td>
+                      <td>
+                        <i className={`fas fa-file-${file.type} icon`} />
+                      </td>
+                      <td>
+                        <h6 className="text-primary">{file.name }</h6>
+                        <p className="mt-n1 mb-0">Created on {file.created }</p>
                       </td>
                     </tr>
                   ))

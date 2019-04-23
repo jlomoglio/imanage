@@ -258,31 +258,31 @@ class MyInfo extends Component {
             <div className="submenu-bar">
               <ul>
                 <li 
-                  className={AppStore.showPersonal ? 'active' : ''}
+                  className={AppStore.appSubSubView === 'Personal' ? 'active' : ''}
                   onClick={() => AppStore.setSubSubView('User Profile', 'My Info', 'Personal') 
                 }>
                   <span>Personal</span>
                 </li>
                 <li 
-                  className={AppStore.showPayInfo ? 'active' : ''}
+                  className={AppStore.appSubSubView === 'Pay Info' ? 'active' : ''}
                   onClick={() => AppStore.setSubSubView('User Profile', 'My Info', 'Pay Info') 
                 }>
                   <span>Pay Info</span>
                 </li>
                 <li 
-                  className={AppStore.showBenefits ? 'active' : ''}
+                  className={AppStore.appSubSubView === 'Benefits' ? 'active' : ''}
                   onClick={() => AppStore.setSubSubView('User Profile', 'My Info', 'Benefits') 
                 }>
                   <span>Benefits</span>
                 </li>
                 <li 
-                  className={AppStore.showTimeOff ? 'active' : ''}
+                  className={AppStore.appSubSubView === 'Time Off' ? 'active' : ''}
                   onClick={() => AppStore.setSubSubView('User Profile', 'My Info', 'Time Off') 
                 }>
                   <span>Time Off</span>
                 </li>
                 <li
-                  className={AppStore.showFiles ? 'active' : ''} 
+                  className={AppStore.appSubSubView === 'Files' ? 'active' : ''} 
                   onClick={() => AppStore.setSubSubView('User Profile', 'My Info', 'Files') 
                 }>
                   <span>Files</span>
@@ -290,11 +290,11 @@ class MyInfo extends Component {
               </ul>
             </div>
 
-            <Personal show={AppStore.showPersonal} />
-            <PayInfo show={AppStore.showPayInfo} />
-            <Benefits show={AppStore.showBenefits} />
-            <TimeOff show={AppStore.showTimeOff} />
-            <Files show={AppStore.showFiles} />
+            <Personal show={AppStore.appSubSubView === 'Personal'} />
+            <PayInfo show={AppStore.appSubSubView === 'Pay Info'} />
+            <Benefits show={AppStore.appSubSubView === 'Benefits'} />
+            <TimeOff show={AppStore.appSubSubView === 'Time Off'} />
+            <Files show={AppStore.appSubSubView === 'Files'} />
 
           </div>
         </div>

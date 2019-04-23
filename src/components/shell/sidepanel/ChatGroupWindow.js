@@ -92,37 +92,30 @@ const ChatGroupWindow = inject('ChatStore')(observer(props => {
           {
             ChatStore.currentChatGroup === 'General' &&
             ChatStore.groupMessagesGeneral.map((msg, index) => (
-              <React.Fragment>
+              <React.Fragment key={index}>
                 <div 
                   className="timestamp" 
                   style={{ display: index === 0 ? 'block' : 'none' }}
-                  key={`${index}_${Math.random()}`}
                 >
                   <span>Today 11:30 am</span>
                 </div>
-                <ChatPersonMessage
-                  msg={msg.msg} 
-                  img={msg.image}
-                  key={`${index}_${Math.random()}_${Math.random()}`}
-                />
+                <ChatPersonMessage msg={msg.msg} img={msg.image} />
               </React.Fragment>
             ))
           }
           {
             ChatStore.currentChatGroup === 'Sales' &&
             ChatStore.groupMessagesSales.map((msg, index) => (
-              <React.Fragment>
+              <React.Fragment key={index}>
                 <div 
                   className="timestamp" 
                   style={{ display: index === 0 ? 'block' : 'none' }}
-                  key={`${index}_${Math.random()}`}
                 >
                   <span>Today 2:30 pm</span>
                 </div>
                 <ChatPersonMessage
                   msg={msg.msg} 
                   img={msg.image}
-                  key={`${index}_${Math.random()}_${Math.random()}`}
                 />
               </React.Fragment>
             ))
@@ -130,18 +123,16 @@ const ChatGroupWindow = inject('ChatStore')(observer(props => {
           {
             ChatStore.currentChatGroup === 'Development' &&
             ChatStore.groupMessagesDevelopment.map((msg, index) => (
-              <React.Fragment>
+              <React.Fragment key={index}>
                 <div 
                   className="timestamp" 
                   style={{ display: index === 0 ? 'block' : 'none' }}
-                  key={`${index}_${Math.random()}`}
                 >
                   <span>Today 3:30 pm</span>
                 </div>
                 <ChatPersonMessage
                   msg={msg.msg} 
                   img={msg.image}
-                  key={`${index}_${Math.random()}_${Math.random()}`}
                 />
               </React.Fragment>
             ))

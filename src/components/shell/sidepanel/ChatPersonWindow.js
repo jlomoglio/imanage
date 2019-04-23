@@ -100,18 +100,16 @@ const ChatPersonWindow = inject('ChatStore', 'UserProfileStore')(observer(props 
           {
             ChatStore.currentChatMember === 'Jane Smith' &&
             ChatStore.janeMessages.map((msg, index) => (
-              <React.Fragment>
+              <React.Fragment key={index}>
                 <div 
                   className="timestamp" 
                   style={{ display: index === 0 ? 'block' : 'none' }}
-                  key={`${index}_${Math.random()}`}
                 >
                   <span>Yesterday 11:25 pm</span>
                 </div>
                 <ChatPersonMessage
                   msg={msg.msg} 
                   img={ChatStore.currentChatMemberImage}
-                  key={`${index}_${Math.random()}_${Math.random()}`}
                 />
               </React.Fragment>
             ))
@@ -119,18 +117,16 @@ const ChatPersonWindow = inject('ChatStore', 'UserProfileStore')(observer(props 
           {
             ChatStore.currentChatMember === 'Marco James' &&
             ChatStore.marcoMessages.map((msg, index) => (
-              <React.Fragment>
+              <React.Fragment key={index}>
                 <div 
                   className="timestamp" 
                   style={{ display: index === 0 ? 'block' : 'none' }}
-                  key={`${index}_${Math.random()}_${Math.random()}`}
                 >
                   <span>Today 10:45 am</span>
                 </div>
                 <ChatPersonMessage
                   msg={msg.msg} 
                   img={ChatStore.currentChatMemberImage}
-                  key={`${index}_${Math.random()}`} 
                 />
               </React.Fragment>
             ))
