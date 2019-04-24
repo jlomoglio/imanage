@@ -28,6 +28,19 @@ class DashboardStore {
     },
   ]
 
+  @observable githubDataThisWeek = [
+    '40%', '27%', '51%', '35%', '28%', '24%', '19%'
+  ];
+
+  @observable githubDataLastWeek = [
+    '30%', '22%', '13%', '65%', '47%', '34%', '29%'
+  ];
+
+  @observable githubData2Weeks = [
+    '70%', '40%', '23%', '45%', '27%', '64%', '89%'
+  ];
+
+
   
   @action changeGithubView(view) {
     this.githubView = view;

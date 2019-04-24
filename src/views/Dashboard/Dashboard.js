@@ -56,6 +56,7 @@ class Dashboard extends Component {
              border-radius: 5px;
              border: 1px solid #ccc;
              width: 100%;
+             height: 380px;
 
             .github-card-header {
               padding: 10px;
@@ -74,9 +75,6 @@ class Dashboard extends Component {
                 padding-top: 0 !important;
                 padding-left: 5px !important;
                 float: left;
-
-                
-                }
               }
 
               .right-col {
@@ -152,6 +150,17 @@ class Dashboard extends Component {
       }
     `;
 
+    let guthubBarChartData;
+    if (DashboardStore.githubView === 'This Week') {
+      guthubBarChartData = DashboardStore.githubDataThisWeek
+    }
+    else if (DashboardStore.githubView === 'Last Week') {
+      guthubBarChartData = DashboardStore.githubDataLastWeek
+    }
+    else if (DashboardStore.githubView === '2 Weeks Ago') {
+      guthubBarChartData = DashboardStore.githubData2Weeks
+    }
+
     return (
       <Styles>
         <div className="view-contents row">
@@ -211,12 +220,12 @@ class Dashboard extends Component {
                 {/* BODY: This Week */}
                 <div 
                   className="github-card-body row this-week"
-                  style={{
-                    display: `${DashboardStore.githubView === "This Week" ? 'block' : 'none'}`
-                  }}
+                  // style={{
+                  //   display: `${DashboardStore.githubView === "This Week" ? 'block' : 'none'}`
+                  // }}
                 >
                   <div className="col-7 left-col">
-                    <GithubBarChart />
+                    <GithubBarChart data={guthubBarChartData} />
                   </div>
                   <div className="col-5 right-col">
                     <div className="dummy-graph"></div>
@@ -224,7 +233,7 @@ class Dashboard extends Component {
                 </div>
 
                 {/* BODY: Last Week */}
-                <div 
+                {/* <div 
                   className="github-card-body row this-week"
                   style={{
                     display: `${DashboardStore.githubView === "Last Week" ? 'block' : 'none'}`
@@ -236,10 +245,10 @@ class Dashboard extends Component {
                   <div className="col-5 right-col">
                     <div className="dummy-graph"></div>
                   </div>
-                </div>
+                </div> */}
 
                 {/* BODY: 2 Weeks Ago */}
-                <div
+                {/* <div
                   className="github-card-body row 2-weeks-ago"
                   style={{
                     display: `${DashboardStore.githubView === "2 Weeks Ago" ? 'block' : 'none'}`
@@ -251,7 +260,7 @@ class Dashboard extends Component {
                   <div className="col-5 right-col">
                     <div className="dummy-graph"></div>
                   </div>
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
