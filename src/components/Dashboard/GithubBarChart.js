@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import styled from 'styled-components';
-import { OverlayTrigger } from 'react-bootstrap'; 
+import { OverlayTrigger, Tooltip } from 'react-bootstrap'; 
 
 @inject('AppStore', 'DashboardStore')
 @observer
@@ -223,16 +223,16 @@ class GithubBarChart extends Component {
           </div>
 
           <div className="bars-box">
-            <OverlayTrigger
-              key={placement}
-              placement={placement}
-              overlay={
-                <Tooltip id={`tooltip-${placement}`}>
-                  Tooltip on <strong>{placement}</strong>.
-                </Tooltip>
-              }
-            >
-              <div className="bar">
+            <div className="bar">
+              <OverlayTrigger
+                key=""
+                placement="top"
+                overlay={
+                  <Tooltip id="">
+                    Issues: <strong>{props.data[6]}</strong>
+                  </Tooltip>
+                }
+              >
                 <div
                   className="inner-bar sun"
                   style={{
@@ -248,110 +248,174 @@ class GithubBarChart extends Component {
                     `
                   }}
                 ></div>
-              </div>
-            </OverlayTrigger>
+              </OverlayTrigger>
+            </div>
 
             <div className="bar">
-              <div
-                className="inner-bar mon"
-                style={{
-                  display: `${
-                    calToday >= weekday[1] ? 'block' : 'none' &&
+              <OverlayTrigger
+                  key=""
+                  placement="top"
+                  overlay={
+                    <Tooltip id="">
+                      Issues: <strong>{props.data[0]}</strong>
+                    </Tooltip>
+                  }
+              >
+                <div
+                  className="inner-bar mon"
+                  style={{
+                    display: `${
+                      calToday >= weekday[1] ? 'block' : 'none' &&
+                        props.view === 'This Week' ? 'none' : 'block'
+                      }`,
+                    background: `
+                      ${
+                        props.today === 'Monday' && 
+                        props.view === 'This Week' ? githubBarColorToday : githubBarColor
+                      }
+                    ` 
+                  }}
+                ></div>
+              </OverlayTrigger>
+            </div>
+
+            <div className="bar">
+              <OverlayTrigger
+                key=""
+                placement="top"
+                overlay={
+                  <Tooltip id="">
+                    Issues: <strong>{props.data[1]}</strong>
+                  </Tooltip>
+                }
+              >
+                <div 
+                  className="inner-bar tue" 
+                  style={{
+                    display: `${
+                      calToday >= weekday[2] ? 'block' : 'none' &&
                       props.view === 'This Week' ? 'none' : 'block'
                     }`,
-                  background: `
-                    ${
-                      props.today === 'Monday' && 
+                    background: `
+                      ${
+                        props.today === 'Tuesday' && 
                       props.view === 'This Week' ? githubBarColorToday : githubBarColor
-                    }
-                  ` 
-                }}
-              ></div>
+                      }
+                    ` 
+                  }}
+                ></div>
+              </OverlayTrigger>
+            </div>
+
+            <div className="bar">
+              <OverlayTrigger
+                key=""
+                placement="top"
+                overlay={
+                  <Tooltip id="">
+                    Issues: <strong>{props.data[2]}</strong>
+                  </Tooltip>
+                }
+              >
+                <div 
+                  className="inner-bar wed" 
+                  style={{ 
+                    display: `${
+                      calToday >= weekday[3] ? 'block' : 'none' &&
+                      props.view === 'This Week' ? 'none' : 'block'
+                    }`,
+                    background: `
+                      ${
+                        props.today === 'Wednesday' && 
+                        props.view === 'This Week' ? githubBarColorToday : githubBarColor
+                      }
+                    ` 
+                  }}
+                ></div>
+              </OverlayTrigger>
+            </div>
+
+            <div className="bar">
+              <OverlayTrigger
+                key=""
+                placement="top"
+                overlay={
+                  <Tooltip id="">
+                    Issues: <strong>{props.data[3]}</strong>
+                  </Tooltip>
+                }
+              >
+                <div 
+                  className="inner-bar thu" 
+                  style={{ 
+                    display: `${
+                      calToday >= weekday[4] ? 'block' : 'none' &&
+                      props.view === 'This Week' ? 'none' : 'block'
+                    }`,
+                    background: `
+                      ${
+                        props.today === 'Thursday' && 
+                        props.view === 'This Week' ? githubBarColorToday : githubBarColor
+                      }
+                    ` 
+                  }}
+                ></div>
+              </OverlayTrigger>
             </div>
             <div className="bar">
-              <div 
-                className="inner-bar tue" 
-                style={{
-                  display: `${
-                    calToday >= weekday[2] ? 'block' : 'none' &&
-                    props.view === 'This Week' ? 'none' : 'block'
-                  }`,
-                  background: `
-                    ${
-                      props.today === 'Tuesday' && 
-                    props.view === 'This Week' ? githubBarColorToday : githubBarColor
-                    }
-                  ` 
-                }}
-              ></div>
-            </div>
-            <div className="bar">
-              <div 
-                className="inner-bar wed" 
-                style={{ 
-                  display: `${
-                    calToday >= weekday[3] ? 'block' : 'none' &&
-                    props.view === 'This Week' ? 'none' : 'block'
-                  }`,
-                  background: `
-                    ${
-                      props.today === 'Wednesday' && 
+              <OverlayTrigger
+                key=""
+                placement="top"
+                overlay={
+                  <Tooltip id="">
+                    Issues: <strong>{props.data[4]}</strong>
+                  </Tooltip>
+                }
+              >
+                <div 
+                  className="inner-bar fri" 
+                  style={{
+                    display: `${
+                      calToday >= weekday[5] ? 'block' : 'none' &&
+                      props.view === 'This Week' ? 'none' : 'block'
+                    }`,
+                    background: `
+                      ${
+                        props.today === 'Friday' && 
                       props.view === 'This Week' ? githubBarColorToday : githubBarColor
-                    }
-                  ` 
-                }}
-              ></div>
+                      }
+                    ` 
+                  }}
+                ></div>
+              </OverlayTrigger>
             </div>
+
             <div className="bar">
-              <div 
-                className="inner-bar thu" 
-                style={{ 
-                  display: `${
-                    calToday >= weekday[4] ? 'block' : 'none' &&
-                    props.view === 'This Week' ? 'none' : 'block'
-                  }`,
-                  background: `
-                    ${
-                      props.today === 'Thursday' && 
-                      props.view === 'This Week' ? githubBarColorToday : githubBarColor
-                    }
-                  ` 
-                }}
-              ></div>
-            </div>
-            <div className="bar">
-              <div 
-                className="inner-bar fri" 
-                style={{
-                  display: `${
-                    calToday >= weekday[5] ? 'block' : 'none' &&
-                    props.view === 'This Week' ? 'none' : 'block'
-                  }`,
-                  background: `
-                    ${
-                      props.today === 'Friday' && 
-                    props.view === 'This Week' ? githubBarColorToday : githubBarColor
-                    }
-                  ` 
-                }}
-              ></div>
-            </div>
-            <div className="bar">
-              <div 
-                className="inner-bar sat" 
-                style={{
-                  display: `${
-                    calToday >= weekday[6] ? 'block' : 'none' &&
-                    props.view === 'This Week' ? 'none' : 'block'
-                  }`, 
-                  background: `
-                    ${
-                      props.today === 'Saturday' && 
-                      props.view === 'This Week' ? githubBarColorToday : githubBarColor
-                    }
-                  ` 
-                }}
-              ></div>
+              <OverlayTrigger
+                key=""
+                placement="top"
+                overlay={
+                  <Tooltip id="">
+                    Issues: <strong>{props.data[5]}</strong>
+                  </Tooltip>
+                }
+              >
+                <div 
+                  className="inner-bar sat" 
+                  style={{
+                    display: `${
+                      calToday >= weekday[6] ? 'block' : 'none' &&
+                      props.view === 'This Week' ? 'none' : 'block'
+                    }`, 
+                    background: `
+                      ${
+                        props.today === 'Saturday' && 
+                        props.view === 'This Week' ? githubBarColorToday : githubBarColor
+                      }
+                    ` 
+                  }}
+                ></div>
+              </OverlayTrigger>
             </div>
           </div>
 
