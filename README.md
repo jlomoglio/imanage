@@ -7,7 +7,7 @@ for CSS/SASS. I plan to build out the backend with MongoDB, Express and Node.
 
 This is an ongoing project that only serves to continue to improve my full-stack MERN development skills.
 
-# I will be doing a build and launching a Github page on 4/28/2019.
+## I will be doing a build and launching a Github page on 4/28/2019.
 
 <img src="iManage.PNG" />
 
