@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import styled from 'styled-components';
+import { OverlayTrigger } from 'react-bootstrap'; 
 
 @inject('AppStore', 'DashboardStore')
 @observer
@@ -8,13 +9,13 @@ class GithubBarChart extends Component {
   render() {
     
     const props = this.props;
-    //const DashboardStore = props.AppStore;
+    const DashboardStore = props.AppStore;
 
     const Styles = styled.div`
       .github-bar-chart {
         height: 300px;
-        width: 99%;
-        margin-top: 10px;
+        width: 90%;
+        margin-top: -60px;
         margin-left: 10px;
         margin-right: 25px;
         margin-bottom: 10px;
@@ -23,59 +24,63 @@ class GithubBarChart extends Component {
 
         .bars-box {
           position: absolute;
-          top: 0;
           left: 30px;
           right: 0px;
           bottom: 30px;
+          height: 200px;
           border: 1px solid #ccc;
           background: white;
           display: inline-block;
 
           .bar {
-            width: 12%;
+            width: 11.2%;
             height: 100%;
             float: left;
-            margin-left: 4px;
-            margin-right: 4px;
+             margin-left: 1%; /* 4px */
+            margin-right: 1%;
             position: relative;
 
             &:first-child {
-              margin-left: 5px;
+              margin-left: 22px;
             }
 
             .inner-bar {
               position: absolute;
               width: 100%;
-              background: lightblue;
+              background: rgba(255,165,0,1);
               bottom: 0;
+              z-index: 2;
+              text-align: center;
+              padding-top: 10px;;
+              color: white;
+              font-size: 18px;
 
               &.mon {
-                top: ${props => props.mon};
+                height: ${props => props.mon}%;
               }
               &.tue {
-                top: ${props => props.tue};
+                height: ${props => props.tue}%;
               }
               &.wed {
-                top: ${props => props.wed};
+                height: ${props => props.wed}%;
               }
               &.thu {
-                top: ${props => props.thu};
+                height: ${props => props.thu}%;
               }
               &.fri {
-                top: ${props => props.fri};
+                height: ${props => props.fri}%;
               }
               &.sat {
-                top: ${props => props.sat};
+                height: ${props => props.sat}%;
               }
               &.sun {
-                top: ${props => props.sun};
+                height: ${props => props.sun}%;
               }
             }
           }
         }
 
         .chart-lines-left {
-          /* position: absolute; */
           height: 280px !important;
           width: 25px;
           top: 0px;
@@ -86,14 +91,15 @@ class GithubBarChart extends Component {
 
         .numbers-box {
           position: absolute;
-          top: 0;
+          /* top: 0; */
+          height: 200px;
           left: 0px;
           width: 30px;
-          bottom: 30px;
+          bottom: 40px;
 
           .number-box {
             width: 25px;
-            height: 44px;
+            height: 20px;
             padding-right: 5px;
 
             .number {
@@ -113,22 +119,83 @@ class GithubBarChart extends Component {
           display: inline-block;
 
           .day-box {
-            width: 12%;
+            width: 11.2%;
             height: 30px;
             float: left;
             text-align: center;
-            margin-left: 4px;
-            margin-right: 4px;
+            margin-left: 1%; /* 4px */
+            margin-right: 1%;
 
             &:first-child {
-              margin-left: 5px;
+              margin-left: 22px;
             }
           }
         }
+
+        .vline {
+          height: 1px;
+          border-top: 1px solid #ccc;
+          z-index: 1;
+          position: absolute;
+          left: 30px;
+          right: 0;
+        }
+
+        .vline-10 {
+          bottom: 50px;
+        }
+
+        .vline-20 {
+          bottom: 70px;
+        }
+
+        .vline-30 {
+          bottom: 90px;
+        }
+
+        .vline-40 {
+          bottom: 110px;
+        }
+
+        .vline-50 {
+          bottom: 130px;
+        }
+
+        .vline-60 {
+          bottom: 150px;
+        }
+
+        .vline-70 {
+          bottom: 170px;
+        }
+
+        .vline-80 {
+          bottom: 190px;
+        }
+
+        .vline-90 {
+          bottom: 210px;
+        }
+
       }
     `;
 
-  
+    let d = new Date();
+    let calToday = d.getDay();
+
+    const githubBarColor = 'rgba(255,165,0,0.7)';
+    const githubBarColorToday = 'rgba(255,165,0,1)';
+
+    let weekday = new Array(7);
+    weekday[0] = 0;
+    weekday[1] = 1;
+    weekday[2] = 2;
+    weekday[3] = 3;
+    weekday[4] = 4;
+    weekday[5] = 5;
+    weekday[6] = 6;
+
+
     return (
       <Styles 
         color={props.bgcolor}
@@ -142,6 +209,10 @@ class GithubBarChart extends Component {
       >
         <div className="github-bar-chart">
           <div className="numbers-box">
+            <div className="number-box"><div className="number">100</div></div>
+            <div className="number-box"><div className="number">90</div></div>
+            <div className="number-box"><div className="number">80</div></div>
+            <div className="number-box"><div className="number">70</div></div>
             <div className="number-box"><div className="number">60</div></div>
             <div className="number-box"><div className="number">50</div></div>
             <div className="number-box"><div className="number">40</div></div>
@@ -152,50 +223,227 @@ class GithubBarChart extends Component {
           </div>
 
           <div className="bars-box">
+            <OverlayTrigger
+              key={placement}
+              placement={placement}
+              overlay={
+                <Tooltip id={`tooltip-${placement}`}>
+                  Tooltip on <strong>{placement}</strong>.
+                </Tooltip>
+              }
+            >
+              <div className="bar">
+                <div
+                  className="inner-bar sun"
+                  style={{
+                    display: `${
+                      calToday >= weekday[0] ? 'block' : 'none' &&
+                      props.view === 'This Week' ? 'none' : 'block'
+                    }`,
+                    background: `
+                      ${
+                      props.today === 'Sunday' &&
+                      props.view === 'This Week' ? githubBarColorToday : githubBarColor
+                      }
+                    `
+                  }}
+                ></div>
+              </div>
+            </OverlayTrigger>
+
             <div className="bar">
-              <div className="inner-bar mon"></div>
+              <div
+                className="inner-bar mon"
+                style={{
+                  display: `${
+                    calToday >= weekday[1] ? 'block' : 'none' &&
+                      props.view === 'This Week' ? 'none' : 'block'
+                    }`,
+                  background: `
+                    ${
+                      props.today === 'Monday' && 
+                      props.view === 'This Week' ? githubBarColorToday : githubBarColor
+                    }
+                  ` 
+                }}
+              ></div>
             </div>
             <div className="bar">
-              <div className="inner-bar tue"></div>
+              <div 
+                className="inner-bar tue" 
+                style={{
+                  display: `${
+                    calToday >= weekday[2] ? 'block' : 'none' &&
+                    props.view === 'This Week' ? 'none' : 'block'
+                  }`,
+                  background: `
+                    ${
+                      props.today === 'Tuesday' && 
+                    props.view === 'This Week' ? githubBarColorToday : githubBarColor
+                    }
+                  ` 
+                }}
+              ></div>
             </div>
             <div className="bar">
-              <div className="inner-bar wed"></div>
+              <div 
+                className="inner-bar wed" 
+                style={{ 
+                  display: `${
+                    calToday >= weekday[3] ? 'block' : 'none' &&
+                    props.view === 'This Week' ? 'none' : 'block'
+                  }`,
+                  background: `
+                    ${
+                      props.today === 'Wednesday' && 
+                      props.view === 'This Week' ? githubBarColorToday : githubBarColor
+                    }
+                  ` 
+                }}
+              ></div>
             </div>
             <div className="bar">
-              <div className="inner-bar thu"></div>
+              <div 
+                className="inner-bar thu" 
+                style={{ 
+                  display: `${
+                    calToday >= weekday[4] ? 'block' : 'none' &&
+                    props.view === 'This Week' ? 'none' : 'block'
+                  }`,
+                  background: `
+                    ${
+                      props.today === 'Thursday' && 
+                      props.view === 'This Week' ? githubBarColorToday : githubBarColor
+                    }
+                  ` 
+                }}
+              ></div>
             </div>
             <div className="bar">
-              <div className="inner-bar fri"></div>
+              <div 
+                className="inner-bar fri" 
+                style={{
+                  display: `${
+                    calToday >= weekday[5] ? 'block' : 'none' &&
+                    props.view === 'This Week' ? 'none' : 'block'
+                  }`,
+                  background: `
+                    ${
+                      props.today === 'Friday' && 
+                    props.view === 'This Week' ? githubBarColorToday : githubBarColor
+                    }
+                  ` 
+                }}
+              ></div>
             </div>
             <div className="bar">
-              <div className="inner-bar sat"></div>
-            </div>
-            <div className="bar">
-              <div className="inner-bar sun"></div>
+              <div 
+                className="inner-bar sat" 
+                style={{
+                  display: `${
+                    calToday >= weekday[6] ? 'block' : 'none' &&
+                    props.view === 'This Week' ? 'none' : 'block'
+                  }`, 
+                  background: `
+                    ${
+                      props.today === 'Saturday' && 
+                      props.view === 'This Week' ? githubBarColorToday : githubBarColor
+                    }
+                  ` 
+                }}
+              ></div>
             </div>
           </div>
 
           <div className="days-box">
-            <div className="day-box">Mon</div>
-            <div className="day-box">Tue</div>
-            <div className="day-box">Wed</div>
-            <div className="day-box">Thu</div>
-            <div className="day-box">Fri</div>
-            <div className="day-box">Sat</div>
-            <div className="day-box">Sun</div>
+            <div 
+              className="day-box"
+              style={{
+                fontWeight: `
+                  ${
+                    props.today === 'Sunday' && 
+                    props.view === 'This Week' ? 'bold' : ''
+                  }
+                ` 
+              }}
+            >Sun</div>
+            <div 
+              className="day-box"
+              style={{
+                fontWeight: `
+                  ${
+                    props.today === 'Monday' && 
+                    props.view === 'This Week' ? 'bold' : ''
+                  }
+                ` 
+              }}
+            >Mon</div>
+            <div 
+              className="day-box"
+              style={{
+                fontWeight: `
+                  ${
+                    props.today === 'Tuesday' && 
+                    props.view === 'This Week' ? 'bold' : ''
+                  }
+                ` 
+              }}
+            >Tue</div>
+            <div 
+              className="day-box"
+              style={{
+                fontWeight: `
+                  ${
+                    props.today === 'Wednesday' && 
+                    props.view === 'This Week' ? 'bold' : ''
+                  }
+                ` 
+              }}
+            >Wed</div>
+            <div
+              className="day-box"
+              style={{
+                fontWeight: `
+                  ${
+                  props.today === 'Thursday' &&
+                    props.view === 'This Week' ? 'bold' : ''
+                  }
+                `
+              }}
+            >Thu</div>
+            <div 
+              className="day-box"
+              style={{
+                fontWeight: `
+                  ${
+                    props.today === 'Friday' && 
+                    props.view === 'This Week' ? 'bold' : ''
+                  }
+                ` 
+              }}
+            >Fri</div>
+            <div 
+              className="day-box"
+              style={{
+                fontWeight: `
+                  ${
+                    props.today === 'Saturday' && 
+                    props.view === 'This Week' ? 'bold' : ''
+                  }
+                ` 
+              }}
+            >Sat</div>
           </div>
         
-          {/* <div className="chart-lines-left"></div> */}
-          {/* <div className="numbers-box"> */}
-            {/* <div className="number-box mt-5"><div className="number">60</div></div>
-            <div className="number-box"><div className="number">50</div></div>
-            <div className="number-box"><div className="number">40</div></div>
-            <div className="number-box"><div className="number">30</div></div>
-            <div className="number-box"><div className="number">20</div></div>
-            <div className="number-box"><div className="number">10</div></div>
-            <div className="number-box"><div className="number">0</div></div> */}
-          {/* </div> */}
-          
+          <div className="vline vline-90"></div>
+          <div className="vline vline-80"></div>
+          <div className="vline vline-70"></div>
+          <div className="vline vline-60"></div>
+          <div className="vline vline-50"></div>
+          <div className="vline vline-40"></div>
+          <div className="vline vline-30"></div>
+          <div className="vline vline-20"></div>
+          <div className="vline vline-10"></div>
         </div>
       </Styles>
     );

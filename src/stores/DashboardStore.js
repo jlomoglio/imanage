@@ -1,4 +1,4 @@
-import { observable, action, computed } from 'mobx';
+import { observable, action } from 'mobx';
 
 class DashboardStore {
   
@@ -29,15 +29,15 @@ class DashboardStore {
   ]
 
   @observable githubDataThisWeek = [
-    '40%', '27%', '51%', '35%', '28%', '24%', '19%'
+    40, 27, 51, 35, 28, 24, 19
   ];
 
   @observable githubDataLastWeek = [
-    '30%', '22%', '13%', '65%', '47%', '34%', '29%'
+    70, 42, 83, 65, 47, 34, 29
   ];
 
   @observable githubData2Weeks = [
-    '70%', '40%', '23%', '45%', '27%', '64%', '89%'
+    60, 40, 23, 45, 97, 50, 89
   ];
 
 

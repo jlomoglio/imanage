@@ -23,7 +23,7 @@ class Dashboard extends Component {
     weekday[5] = "Friday";
     weekday[6] = "Saturday";
 
-    let month = new Array();
+    let month = new Array(12);
     month[0] = "January";
     month[1] = "February";
     month[2] = "March";
@@ -56,7 +56,7 @@ class Dashboard extends Component {
              border-radius: 5px;
              border: 1px solid #ccc;
              width: 100%;
-             height: 380px;
+             height: 300px;
 
             .github-card-header {
               padding: 10px;
@@ -216,51 +216,20 @@ class Dashboard extends Component {
                     </button>
                   </div>
                 </div>
-                
+                <hr className="p-0 m-0" />
                 {/* BODY: This Week */}
-                <div 
-                  className="github-card-body row this-week"
-                  // style={{
-                  //   display: `${DashboardStore.githubView === "This Week" ? 'block' : 'none'}`
-                  // }}
-                >
+                <div className="github-card-body row this-week">
                   <div className="col-7 left-col">
-                    <GithubBarChart data={guthubBarChartData} />
+                    <GithubBarChart 
+                      view={DashboardStore.githubView} 
+                      today={calDay} 
+                      data={guthubBarChartData} 
+                    />
                   </div>
                   <div className="col-5 right-col">
                     <div className="dummy-graph"></div>
                   </div>
                 </div>
-
-                {/* BODY: Last Week */}
-                {/* <div 
-                  className="github-card-body row this-week"
-                  style={{
-                    display: `${DashboardStore.githubView === "Last Week" ? 'block' : 'none'}`
-                  }}
-                >
-                  <div className="col-7 left-col">
-                    <div className="dummy-graph">LAST WEEK</div>
-                  </div>
-                  <div className="col-5 right-col">
-                    <div className="dummy-graph"></div>
-                  </div>
-                </div> */}
-
-                {/* BODY: 2 Weeks Ago */}
-                {/* <div
-                  className="github-card-body row 2-weeks-ago"
-                  style={{
-                    display: `${DashboardStore.githubView === "2 Weeks Ago" ? 'block' : 'none'}`
-                  }}
-                >
-                  <div className="col-7 left-col">
-                    <div className="dummy-graph">2 WEEKS AGO</div>
-                  </div>
-                  <div className="col-5 right-col">
-                    <div className="dummy-graph"></div>
-                  </div>
-                </div> */}
               </div>
             </div>
           </div>
@@ -284,8 +253,8 @@ class Dashboard extends Component {
               <div className="schedule-card-body">
                 {
                   DashboardStore.events.map((event, index) => (
-                    <React.Fragment>
-                      <div key={index} className="event w-100 pl-2">
+                    <React.Fragment key={index}>
+                      <div className="event w-100 pl-2">
                         <h6 className="w-100">{ event.label }</h6>
                         <p className="mt-n2">{ event.when }</p>
                       </div>
