@@ -15,7 +15,7 @@ class GithubBarChart extends Component {
       .github-bar-chart {
         height: 300px;
         width: 90%;
-        margin-top: -60px;
+        margin-top: -50px;
         margin-left: 10px;
         margin-right: 25px;
         margin-bottom: 10px;
@@ -199,13 +199,14 @@ class GithubBarChart extends Component {
     return (
       <Styles 
         color={props.bgcolor}
-        mon={props.data[0]}
-        tue={props.data[1]}
-        wed={props.data[2]}
-        thu={props.data[3]}
-        fri={props.data[4]}
-        sat={props.data[5]}
-        sun={props.data[6]}
+        sun={props.data[0]}
+        mon={props.data[1]}
+        tue={props.data[2]}
+        wed={props.data[3]}
+        thu={props.data[4]}
+        fri={props.data[5]}
+        sat={props.data[6]}
+       
       >
         <div className="github-bar-chart">
           <div className="numbers-box">
@@ -229,7 +230,7 @@ class GithubBarChart extends Component {
                 placement="top"
                 overlay={
                   <Tooltip id="">
-                    Issues: <strong>{props.data[6]}</strong>
+                    Issues: <strong>{props.data[0]}</strong>
                   </Tooltip>
                 }
               >
@@ -257,7 +258,7 @@ class GithubBarChart extends Component {
                   placement="top"
                   overlay={
                     <Tooltip id="">
-                      Issues: <strong>{props.data[0]}</strong>
+                      Issues: <strong>{props.data[1]}</strong>
                     </Tooltip>
                   }
               >
@@ -285,7 +286,7 @@ class GithubBarChart extends Component {
                 placement="top"
                 overlay={
                   <Tooltip id="">
-                    Issues: <strong>{props.data[1]}</strong>
+                    Issues: <strong>{props.data[2]}</strong>
                   </Tooltip>
                 }
               >
@@ -313,7 +314,7 @@ class GithubBarChart extends Component {
                 placement="top"
                 overlay={
                   <Tooltip id="">
-                    Issues: <strong>{props.data[2]}</strong>
+                    Issues: <strong>{props.data[3]}</strong>
                   </Tooltip>
                 }
               >
@@ -341,7 +342,7 @@ class GithubBarChart extends Component {
                 placement="top"
                 overlay={
                   <Tooltip id="">
-                    Issues: <strong>{props.data[3]}</strong>
+                    Issues: <strong>{props.data[4]}</strong>
                   </Tooltip>
                 }
               >
@@ -362,13 +363,14 @@ class GithubBarChart extends Component {
                 ></div>
               </OverlayTrigger>
             </div>
+            
             <div className="bar">
               <OverlayTrigger
                 key=""
                 placement="top"
                 overlay={
                   <Tooltip id="">
-                    Issues: <strong>{props.data[4]}</strong>
+                    Issues: <strong>{props.data[5]}</strong>
                   </Tooltip>
                 }
               >
@@ -396,7 +398,7 @@ class GithubBarChart extends Component {
                 placement="top"
                 overlay={
                   <Tooltip id="">
-                    Issues: <strong>{props.data[5]}</strong>
+                    Issues: <strong>{props.data[6]}</strong>
                   </Tooltip>
                 }
               >

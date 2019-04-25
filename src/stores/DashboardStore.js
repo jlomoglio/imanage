@@ -29,7 +29,7 @@ class DashboardStore {
   ]
 
   @observable githubDataThisWeek = [
-    40, 27, 51, 35, 28, 24, 19
+    19, 40, 27, 51, 35, 28, 24
   ];
 
   @observable githubDataLastWeek = [
@@ -40,7 +40,67 @@ class DashboardStore {
     60, 40, 23, 45, 97, 50, 89
   ];
 
+  @observable githubIssuesCreatedThisWeek = [
+    {
+      day: 'Sun',
+      value: 60
+    },
+    {
+      day: 'Mon',
+      value: 30
+    },
+    {
+      day: 'Tue',
+      value: 80
+    },
+    {
+      day: 'Wed',
+      value: 20
+    },
+    {
+      day: 'Thu',
+      value: 50
+    },
+    {
+      day: 'Fri',
+      value: 70
+    },
+    {
+      day: 'Sat',
+      value: 90
+    },
+  ];
 
+  @observable githubIssuesClosedThisWeek = [
+    {
+      day: 'Sun',
+      value: 0
+    },
+    {
+      day: 'Mon',
+      value: 40
+    },
+    {
+      day: 'Tue',
+      value: 20
+    },
+    {
+      day: 'Wed',
+      value: 26
+    },
+    {
+      day: 'Thu',
+      value: 45
+    },
+    {
+      day: 'Fri',
+      value: 60
+    },
+    {
+      day: 'Sat',
+      value: 0
+    },
+  ];
   
   @action changeGithubView(view) {
     this.githubView = view;

@@ -3,6 +3,7 @@ import { inject, observer } from 'mobx-react';
 import styled from 'styled-components';
 import SmallCard from '../../components/Dashboard/SmallCard';
 import GithubBarChart from '../../components/Dashboard/GithubBarChart';
+import GithubIssuesCard from '../../components/Dashboard/GithubIssuesCard';
 
 @inject('AppStore', 'DashboardStore')
 @observer
@@ -41,7 +42,9 @@ class Dashboard extends Component {
     const calMonth = month[d.getMonth()];
     const calDayNum = d.getDate();
     const calYear = d.getFullYear();
-    
+    const dayOfWeekNum = d.getDay();
+
+   
     const Styles = styled.div`
       .view-contents {
         padding: 20px;
@@ -56,7 +59,7 @@ class Dashboard extends Component {
              border-radius: 5px;
              border: 1px solid #ccc;
              width: 100%;
-             height: 300px;
+             height: 340px;
 
             .github-card-header {
               padding: 10px;
@@ -161,6 +164,18 @@ class Dashboard extends Component {
       guthubBarChartData = DashboardStore.githubData2Weeks
     }
 
+    let createdThisWeekTotal = [];
+
+    DashboardStore.githubIssuesCreatedThisWeek.map((issue, index) => {
+      return createdThisWeekTotal[index] = issue.value;
+    });
+
+    function getSum(total, num) {
+      return total + num
+    }
+
+    let createdTotalToday = createdThisWeekTotal.reduce(getSum);
+
     return (
       <Styles>
         <div className="view-contents row">
@@ -173,7 +188,13 @@ class Dashboard extends Component {
                 <SmallCard title="Overdue" num="5" subtitle="TASKS" footer="Yeterday: 2" bgcolor="red" />
               </div>
               <div className="col-3">
-                <SmallCard title="Issues" num="35" subtitle="OPEN" footer="Closed Today: 0" bgcolor="orange" />
+                <SmallCard 
+                  title="Issues" 
+                  num={DashboardStore.githubDataThisWeek[dayOfWeekNum]} 
+                  subtitle="OPEN" 
+                  footer="Closed Today: 0" 
+                  bgcolor="orange" 
+                />
               </div>
               <div className="col-3">
                 <SmallCard title="Features" num="18" subtitle="PROPOSALS" footer="Implemented: 8" bgcolor="green" />
@@ -185,7 +206,7 @@ class Dashboard extends Component {
                 {/* HEADER */}
                 <div className="github-card-header row">
                   <div className="col-6">
-                    <h6>Github Issues</h6>
+                    <h6>Github Issue Tracker</h6>
                   </div>
                   <div className="col-6 buttons">
                     <button 
@@ -220,6 +241,7 @@ class Dashboard extends Component {
                 {/* BODY: This Week */}
                 <div className="github-card-body row this-week">
                   <div className="col-7 left-col">
+                    <h6 className="ml-2 mt-1">ISSUES</h6>
                     <GithubBarChart 
                       view={DashboardStore.githubView} 
                       today={calDay} 
@@ -227,7 +249,22 @@ class Dashboard extends Component {
                     />
                   </div>
                   <div className="col-5 right-col">
-                    <div className="dummy-graph"></div>
+                    <div className="row">
+                      <div className="col-6">
+                        <GithubIssuesCard label="CREATED" totalToday={createdTotalToday} />
+                      </div>
+                      <div className="col-6">
+                        <GithubIssuesCard label="CLOSED" totalToday="56" />
+                      </div>
+                    </div>
+                    <div className="row">
+                      <div className="col-6">
+                        <GithubIssuesCard label="NEEDS TEST" totalToday="89" />
+                      </div>
+                      <div className="col-6">
+                        <GithubIssuesCard label="FIXED" totalToday="45" />
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
