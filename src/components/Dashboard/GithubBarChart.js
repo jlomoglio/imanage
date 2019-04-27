@@ -9,7 +9,6 @@ class GithubBarChart extends Component {
   render() {
     
     const props = this.props;
-    const DashboardStore = props.AppStore;
 
     const Styles = styled.div`
       .github-bar-chart {

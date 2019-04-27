@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import SmallCard from '../../components/Dashboard/SmallCard';
 import GithubBarChart from '../../components/Dashboard/GithubBarChart';
 import GithubIssuesCard from '../../components/Dashboard/GithubIssuesCard';
+import TasksDoughnutChart from '../../components/Dashboard/TasksDoughnutChart';
 
 @inject('AppStore', 'DashboardStore')
 @observer
@@ -13,38 +14,6 @@ class Dashboard extends Component {
     const props = this.props;
     const DashboardStore = props.DashboardStore;
 
-    let d = new Date();
-
-    let weekday = new Array(7);
-    weekday[0] = "Sunday";
-    weekday[1] = "Monday";
-    weekday[2] = "Tuesday";
-    weekday[3] = "Wednesday";
-    weekday[4] = "Thursday";
-    weekday[5] = "Friday";
-    weekday[6] = "Saturday";
-
-    let month = new Array(12);
-    month[0] = "January";
-    month[1] = "February";
-    month[2] = "March";
-    month[3] = "April";
-    month[4] = "May";
-    month[5] = "June";
-    month[6] = "July";
-    month[7] = "August";
-    month[8] = "September";
-    month[9] = "October";
-    month[10] = "November";
-    month[11] = "December";
-
-    const calDay = weekday[d.getDay()];
-    const calMonth = month[d.getMonth()];
-    const calDayNum = d.getDate();
-    const calYear = d.getFullYear();
-    const dayOfWeekNum = d.getDay();
-
-   
     const Styles = styled.div`
       .view-contents {
         padding: 20px;
@@ -59,14 +28,16 @@ class Dashboard extends Component {
              border-radius: 5px;
              border: 1px solid #ccc;
              width: 100%;
+             margin-left: 8px;
+             margin-right: 8px;
              height: 340px;
+             background: white;
 
             .github-card-header {
               padding: 10px;
  
               .buttons {
                 text-align: right;
-
               }
             }
 
@@ -84,18 +55,26 @@ class Dashboard extends Component {
                 padding-top: 0 !important;
                 padding-right: 20px !important;
                 float: right;
-
-                .dummy-graph {
-                  background: blue;
-                  height: 200px;
-                  width: 99%;
-                  margin-top: 10px;
-                  margin-left: 10px;
-                  margin-right: 25px;
-                  margin-bottom: 10px;
-                }
               }
               
+            }
+          }
+
+          .task-dist-card {
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 100%;
+            margin-left: 0px;
+            margin-right: 0px;
+            height: 360px;
+            background: white;
+
+            .task-dist-card-header {
+              padding: 10px;
+            }
+
+            .task-dist-card-body {
+              padding: 10px;
             }
           }
         }
@@ -153,28 +132,150 @@ class Dashboard extends Component {
       }
     `;
 
-    let guthubBarChartData;
+    let d = new Date();
+
+    let weekday = new Array(7);
+    weekday[0] = "Sunday";
+    weekday[1] = "Monday";
+    weekday[2] = "Tuesday";
+    weekday[3] = "Wednesday";
+    weekday[4] = "Thursday";
+    weekday[5] = "Friday";
+    weekday[6] = "Saturday";
+
+    let month = new Array(12);
+    month[0] = "January";
+    month[1] = "February";
+    month[2] = "March";
+    month[3] = "April";
+    month[4] = "May";
+    month[5] = "June";
+    month[6] = "July";
+    month[7] = "August";
+    month[8] = "September";
+    month[9] = "October";
+    month[10] = "November";
+    month[11] = "December";
+
+    const calDay = weekday[d.getDay()];
+    const calMonth = month[d.getMonth()];
+    const calDayNum = d.getDate();
+    const calYear = d.getFullYear();
+    const dayOfWeekNum = d.getDay();
+
+    let githubBarChartData;
     if (DashboardStore.githubView === 'This Week') {
-      guthubBarChartData = DashboardStore.githubDataThisWeek
+      githubBarChartData = DashboardStore.githubDataThisWeek
     }
     else if (DashboardStore.githubView === 'Last Week') {
-      guthubBarChartData = DashboardStore.githubDataLastWeek
+      githubBarChartData = DashboardStore.githubDataLastWeek
     }
     else if (DashboardStore.githubView === '2 Weeks Ago') {
-      guthubBarChartData = DashboardStore.githubData2Weeks
+      githubBarChartData = DashboardStore.githubData2Weeks
     }
 
-    let createdThisWeekTotal = [];
-
-    DashboardStore.githubIssuesCreatedThisWeek.map((issue, index) => {
-      return createdThisWeekTotal[index] = issue.value;
-    });
-
+    let createdTotal;
+    let closedTotal;
+    let needTestTotal;
+    let fixedTotal;
+ 
+    // RETURNS THE TOTAL NUMBER OF ISSUES
     function getSum(total, num) {
       return total + num
     }
 
-    let createdTotalToday = createdThisWeekTotal.reduce(getSum);
+    // GITHUB ISSUES THIS WEEK
+    if (DashboardStore.githubView === 'This Week') {
+      // TOTAL CREATED GITHUB ISSUES THIS WEEK
+      let createdThisWeekTotal = [];
+      DashboardStore.githubIssuesCreatedThisWeek.map((issue, index) => {
+        return createdThisWeekTotal[index] = issue.value;
+      });
+      createdTotal = createdThisWeekTotal.reduce(getSum);
+
+      // TOTAL CLOSED GITHUB ISSUES THIS WEEK
+      let closedThisWeekTotal = [];
+      DashboardStore.githubIssuesClosedThisWeek.map((issue, index) => {
+        return closedThisWeekTotal[index] = issue.value;
+      });
+      closedTotal = closedThisWeekTotal.reduce(getSum);
+
+      // TOTAL NEED TEST GITHUB ISSUES THIS WEEK
+      let needTestThisWeekTotal = [];
+      DashboardStore.githubIssuesNeedTestThisWeek.map((issue, index) => {
+        return needTestThisWeekTotal[index] = issue.value;
+      });
+      needTestTotal = needTestThisWeekTotal.reduce(getSum);
+
+      // TOTAL FIXED GITHUB ISSUES THIS WEEK
+      let fixedThisWeekTotal = [];
+      DashboardStore.githubIssuesFixedThisWeek.map((issue, index) => {
+        return fixedThisWeekTotal[index] = issue.value;
+      });
+      fixedTotal = fixedThisWeekTotal.reduce(getSum);
+    }
+    // GITHUB ISSUES LAST WEEK
+    else if (DashboardStore.githubView === 'Last Week') {
+      // TOTAL CREATED GITHUB ISSUES LAST WEEK
+      let createdLastWeekTotal = [];
+      DashboardStore.githubIssuesCreatedLastWeek.map((issue, index) => {
+        return createdLastWeekTotal[index] = issue.value;
+      });
+      createdTotal = createdLastWeekTotal.reduce(getSum);
+
+      // TOTAL CLOSED GITHUB ISSUES LAST WEEK
+      let closedLastWeekTotal = [];
+      DashboardStore.githubIssuesClosedLastWeek.map((issue, index) => {
+        return closedLastWeekTotal[index] = issue.value;
+      });
+      closedTotal = closedLastWeekTotal.reduce(getSum);
+
+      // TOTAL NEED TEST GITHUB ISSUES LAST WEEK
+      let needTestLastWeekTotal = [];
+      DashboardStore.githubIssuesNeedTestLastWeek.map((issue, index) => {
+        return needTestLastWeekTotal[index] = issue.value;
+      });
+      needTestTotal = needTestLastWeekTotal.reduce(getSum);
+
+      // TOTAL FIXED GITHUB ISSUES LAST WEEK
+      let fixedLastWeekTotal = [];
+      DashboardStore.githubIssuesFixedLastWeek.map((issue, index) => {
+        return fixedLastWeekTotal[index] = issue.value;
+      });
+      fixedTotal = fixedLastWeekTotal.reduce(getSum);
+    }
+
+    // GITHUB ISSUES 2 WEEKS AGO
+    else if (DashboardStore.githubView === '2 Weeks Ago') {
+      // TOTAL CREATED GITHUB ISSUES 2 WEEKS AGO
+      let created2WeekTotal = [];
+      DashboardStore.githubIssuesCreated2WeeksAgo.map((issue, index) => {
+        return created2WeekTotal[index] = issue.value;
+      });
+      createdTotal = created2WeekTotal.reduce(getSum);
+
+      // TOTAL CLOSED GITHUB ISSUES 2 WEEKS AGO
+      let closed2WeekTotal = [];
+      DashboardStore.githubIssuesClosed2WeeksAgo.map((issue, index) => {
+        return closed2WeekTotal[index] = issue.value;
+      });
+      closedTotal = closed2WeekTotal.reduce(getSum);
+
+      // TOTAL NEED TEST GITHUB ISSUES 2 WEEKS AGO
+      let needTest2WeekTotal = [];
+      DashboardStore.githubIssuesNeedTest2WeeksAgo.map((issue, index) => {
+        return needTest2WeekTotal[index] = issue.value;
+      });
+      needTestTotal = needTest2WeekTotal.reduce(getSum);
+
+      // TOTAL FIXED GITHUB ISSUES 2 WEEKS AGO
+      let fixed2WeekTotal = [];
+      DashboardStore.githubIssuesFixed2WeeksAgo.map((issue, index) => {
+        return fixed2WeekTotal[index] = issue.value;
+      });
+      fixedTotal = fixed2WeekTotal.reduce(getSum);
+    }
+
 
     return (
       <Styles>
@@ -210,27 +311,44 @@ class Dashboard extends Component {
                   </div>
                   <div className="col-6 buttons">
                     <button 
-                      className={
-                        `btn btn-sm btn-${DashboardStore.githubView === 'This Week' ? 'primary' : 'outline-secondary'} mr-2`
-                      }
+                      className={`
+                        btn btn-sm 
+                        btn-${
+                          DashboardStore.githubView === 'This Week' ? 
+                          'secondary' : 
+                          'outline-secondary'
+                        } 
+                        mr-2
+                      `}
                       onClick={() => DashboardStore.changeGithubView('This Week')}
                     >
                       This Week
                     </button>
 
                     <button 
-                      className={
-                        `btn btn-sm btn-${DashboardStore.githubView === 'Last Week' ? 'primary' : 'outline-secondary'} mr-2`
-                      }
+                      className={`
+                        btn btn-sm 
+                        btn-${
+                          DashboardStore.githubView === 'Last Week' ? 
+                          'secondary' : 
+                          'outline-secondary'
+                        } 
+                        mr-2
+                      `}
                       onClick={() => DashboardStore.changeGithubView('Last Week')}
                     >
                       Last Week
                     </button>
 
                     <button 
-                      className={
-                        `btn btn-sm btn-${DashboardStore.githubView === '2 Weeks Ago' ? 'primary' : 'outline-secondary'}`
-                      }
+                      className={`
+                        btn btn-sm 
+                        btn-${
+                          DashboardStore.githubView === '2 Weeks Ago' ? 
+                          'secondary' : 
+                          'outline-secondary'
+                        }
+                      `}
                       onClick={() => DashboardStore.changeGithubView('2 Weeks Ago')}
                     >
                       2 Weeks Ago
@@ -245,26 +363,109 @@ class Dashboard extends Component {
                     <GithubBarChart 
                       view={DashboardStore.githubView} 
                       today={calDay} 
-                      data={guthubBarChartData} 
+                      data={githubBarChartData} 
                     />
                   </div>
                   <div className="col-5 right-col">
                     <div className="row">
                       <div className="col-6">
-                        <GithubIssuesCard label="CREATED" totalToday={createdTotalToday} />
+                        <GithubIssuesCard 
+                          label="CREATED"
+                          today={calDay} 
+                          view={DashboardStore.githubView} 
+                          totalToday={createdTotal}
+                          type="created"
+                        />
                       </div>
                       <div className="col-6">
-                        <GithubIssuesCard label="CLOSED" totalToday="56" />
+                        <GithubIssuesCard 
+                          label="CLOSED"
+                          today={calDay}
+                          view={DashboardStore.githubView}
+                          totalToday={closedTotal}
+                          type="closed" 
+                        />
                       </div>
                     </div>
                     <div className="row">
                       <div className="col-6">
-                        <GithubIssuesCard label="NEEDS TEST" totalToday="89" />
+                        <GithubIssuesCard 
+                          label="NEEDS TEST"
+                          today={calDay} 
+                          view={DashboardStore.githubView}
+                          totalToday={needTestTotal}
+                          type="test"
+                        />
                       </div>
                       <div className="col-6">
-                        <GithubIssuesCard label="FIXED" totalToday="45" />
+                        <GithubIssuesCard 
+                          label="FIXED"
+                          today={calDay} 
+                          view={DashboardStore.githubView}
+                          totalToday={fixedTotal}
+                          type="fixed"
+                        />
                       </div>
                     </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="row mt-3">
+              <div className="col-4 ml-n2">
+                <div className="task-dist-card">
+                  <div className="task-dist-card-header row">
+                    <div className="col-12">
+                      <h6 className="">Task Distribution</h6>
+                    </div>
+                  </div>
+                  <hr className="p-0 m-0" />
+                  <div className="task-dist-card-body row">
+                    <TasksDoughnutChart
+                      seg1Size={20} seg1Color="blue"
+                      seg2Size={40} seg2Color="green"
+                      seg3Size={30} seg3Color="orange"
+                      seg4Size={10} seg4Color="red"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-4">
+                <div className="task-dist-card">
+                  <div className="task-dist-card-header row">
+                    <div className="col-12">
+                      <h6 className="">Issue Distribution</h6>
+                    </div>
+                  </div>
+                  <hr className="p-0 m-0" />
+                  <div className="task-dist-card-body row">
+                    <TasksDoughnutChart
+                      seg1Size={37} seg1Color="blue"
+                      seg2Size={15} seg2Color="green"
+                      seg3Size={28} seg3Color="orange"
+                      seg4Size={20} seg4Color="red"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="col-4 mr-n3">
+                <div className="task-dist-card p-0 m-0">
+                  <div className="task-dist-card-header row">
+                    <div className="col-12">
+                      <h6 className="">Feature Distribution</h6>
+                    </div>
+                  </div>
+                  <hr className="p-0 m-0" />
+                  <div className="task-dist-card-body row">
+                    <TasksDoughnutChart
+                      seg1Size={10} seg1Color="blue"
+                      seg2Size={30} seg2Color="green"
+                      seg3Size={20} seg3Color="orange"
+                      seg4Size={40} seg4Color="red"
+                    />
                   </div>
                 </div>
               </div>
@@ -300,9 +501,7 @@ class Dashboard extends Component {
                   ))
                 }
               </div>
-              <div className="schedule-card-footer">
-
-              </div>
+              <div className="schedule-card-footer"></div>
             </div>
           </div>
         </div>
