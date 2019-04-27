@@ -26,8 +26,8 @@ class Profile extends Component {
       }
 
       .photo {
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
         border-radius: 50%;
       }
 
@@ -62,7 +62,7 @@ class Profile extends Component {
         right: -40%;
         top: 95%;
         content: '';
-        font-size: 9.5px;
+        font-size: 9px;
         padding: 1em;
         border-radius: 999px;
         line-height: .75em;

@@ -41,13 +41,16 @@ class Sidebar extends Component {
           <Profile />
           <NavItem label="Dashboard" icon="fa-tachometer-alt" view="Dashboard"></NavItem>
           
-          <NavItem sub ref="sub" label="UI Elements" icon="fa-desktop" view="UI Elements">
+          {/* <NavItem sub ref="sub" label="UI Elements" icon="fa-desktop" view="UI Elements">
             <NavSubItem label="General Elements" view="UI Elements" subview="General Elements" />
             <NavSubItem label="Buttons" view="UI Elements" subview="Buttons" />
             <NavSubItem label="Icons" view="UI Elements" subview="Icons" />
-          </NavItem>
+          </NavItem> */}
 
-          <NavItem label="Widgets" icon="fa-list-alt" view="Widgets"></NavItem>
+          <NavItem label="Projects" icon="fa-project-diagram" view="Projects"></NavItem>
+          <NavItem label="Backlog" icon="fa-list-alt" view="Backlog"></NavItem>
+          <NavItem label="Board" icon="fa-chalkboard-teacher" view="Board"></NavItem>
+          <NavItem label="Issues" icon="fa-exclamation-triangle" view="Issues"></NavItem>
         </div>
       </Styles>
     );

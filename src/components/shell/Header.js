@@ -24,10 +24,10 @@ class Header extends Component {
 
       .fa-stack[data-count]:after{
         position: absolute;
-        right: 0%;
-        top: 1%;
+        right: 0px;
+        top: 0px;
         content: attr(data-count);
-        font-size: 9.5px;
+        font-size: 9px;
         padding: .6em;
         border-radius: 999px;
         line-height: .75em;
@@ -36,7 +36,7 @@ class Header extends Component {
         text-align: center;
         min-width: 2em;
         font-weight: bold;
-        margin-left: 5px;
+        margin-left: 8px;
       }
 
     }

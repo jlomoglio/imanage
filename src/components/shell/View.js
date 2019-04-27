@@ -8,12 +8,11 @@ import Settings from '../../views/Profile/Settings';
 import Help from '../../views/Profile/Help';
 
 import Dashboard from '../../views/Dashboard/Dashboard';
+import Projects from '../../views/Projects/Projects';
+import Backlog from '../../views/Backlog/Backlog';
+import Board from '../../views/Board/Board';
+import Issues from '../../views/Issues/Issues';
 
-import GeneralElements from '../../views/UI_Elements/GeneralElements';
-import Buttons from '../../views/UI_Elements/Buttons';
-import Icons from '../../views/UI_Elements/Icons';
-
-import Widgets from '../../views/Widgets/Widgets';
 
 @inject('AppStore')
 @observer
@@ -52,24 +51,17 @@ class View extends Component {
           
           { AppStore.appView === 'Dashboard' && <Dashboard /> } 
 
-          { 
+          {/* { 
             AppStore.appView === 'UI Elements' &&
             AppStore.appSubView === 'General Elements' &&
             <GeneralElements /> 
-          }
-          { 
-            AppStore.appView === 'UI Elements' &&
-            AppStore.appSubView === 'Buttons' &&
-            <Buttons /> 
-          }
-          { 
-            AppStore.appView === 'UI Elements' &&
-            AppStore.appSubView === 'Icons' &&
-            <Icons /> 
-          }
+          } */}
+          
 
-
-          { AppStore.appView === 'Widgets' && <Widgets /> }       
+          { AppStore.appView === 'Projects' && <Projects /> }
+          { AppStore.appView === 'Backlog' && <Backlog /> }
+          { AppStore.appView === 'Board' && <Board /> }
+          { AppStore.appView === 'Issues' && <Issues /> }
         </div>
       </Styles>
     )
