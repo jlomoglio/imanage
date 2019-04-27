@@ -3,7 +3,7 @@ import { inject, observer } from 'mobx-react';
 import styled from 'styled-components';
 import Profile from './Profile';
 import NavItem from './NavItem';
-import NavSubItem from './NavSubItem';
+//import NavSubItem from './NavSubItem';
 
 @inject('AppStore')
 @observer
