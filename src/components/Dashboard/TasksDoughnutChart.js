@@ -8,13 +8,27 @@ import styled from 'styled-components';
 class TasksDoughnutChart extends Component {
   state = {
     showPercentLabel: false,
-    percent: ''
+    percent: '',
+    bgColor: '',
+    textColor: ''
   }
+
+  togglePercentLabel = (seg, size, bgColor, txtColor, e) => {
+    e.stopPropagation();
+
+    this.setState({
+      showPercentLabel: true,
+      percent: size,
+      segmentColor: bgColor,
+      textColor: txtColor
+    });
+  }
+
 
   render() {
     const props = this.props;
     //const DashboardStore = props.DashboardStore;
- 
+
     const Styles = styled.div`
       .wrapper {
         position: absolute;
@@ -32,12 +46,19 @@ class TasksDoughnutChart extends Component {
           border-radius: 50%;
           margin: 0 auto;
 			    position: absolute;
-          top: 48px;
-          left: 50%;
+          top: 52px;
+          left: 49%;
           margin-left: -70px;
           z-index: 4;
           text-align: center;
           font-weight: 600;
+        }
+
+        .symbol {
+          font-size: 12px;
+          position: absolute;
+          top: 12px;
+          right: 24%;
         }
 
         .donut-hole {
@@ -73,29 +94,16 @@ class TasksDoughnutChart extends Component {
           padding-top: 10px;
           padding-bottom: 10px;
 
-          button.seg-label {
+          .seg-label {
             position: relative;
             margin-left: 2px;
             margin-right: 2px;
             font-size: .8vw;
+            cursor: pointer;
+            z-index: 12;
 
-            .color-box {
-              width: 10px;
-              height: 10px;
-              float: left;
-              margin-top: 5px;
-              margin-right: 5px;
-              display: none;
-
-              &.blue { background: #007bff }
-              &.green { background: #28a745 }
-              &.orange { background: #ffc107 }
-              &.red { background: #dc3545 }
-            }
-
-            .text {
-              float: left;
-              margin-right: 5px;
+            &> * {
+              pointer-events: none !important;
             }
           }
         }
@@ -115,6 +123,12 @@ class TasksDoughnutChart extends Component {
     const seg3 = (props.seg1Size + props.seg2Size + props.seg3Size);
     const seg4 = (props.seg1Size + props.seg2Size + props.seg3Size + props.seg4Size);
 
+    const primary = '#007bff';
+    const success = '#28a745';
+    const warning = '#ffc107';
+    const danger = '#dc3545';
+
+ 
     return (
       <Styles 
         seg1={`${props.seg1Color} 0% ${seg1}%`} 
@@ -126,50 +140,49 @@ class TasksDoughnutChart extends Component {
           <div 
             className="percent-label" 
             ref="percentLabel"
-            style={{ display: this.state.showPercentLabel ? 'display' : 'none' }}
+            style={{
+              display: this.state.showPercentLabel ? 'display' : 'none',
+              color: this.state.textColor
+            }}
           >
-            <span className="h1">{this.state.percent}<small>%</small></span>
+            <div className="h1">{this.state.percent}<div className="symbol">%</div></div>
           </div>
           
-          <div className="donut-hole"></div>
+          <div
+            className="donut-hole" 
+            ref="donutHole"
+            style={{ background: this.state.segmentColor }}
+          ></div>
           <div className="pie"></div>
         
           <div className="legend">
-            <button 
+            <div 
               className="seg-label btn btn-sm btn-primary" 
-              onMouseOver={() => this.setState({ showPercentLabel: true, percent: props.seg1Size })}
-              onMouseLeave={ () => this.setState({showPercentLabel: false, percent: '' })}
+              onClick={(e) => this.togglePercentLabel('1', props.seg1Size, primary, 'white', e)}
             >
-              <div className="color-box blue"></div>
-              <span className="text">Frontend</span>
-            </button>
+              Frontend
+            </div>
           
-            <button
-              className="seg-label btn btn-sm btn-success"
-              onMouseEnter={() => this.setState({ showPercentLabel: true, percent: props.seg2Size })}
-              onMouseLeave={() => this.setState({ showPercentLabel: false, percent: '' })}
+            <div 
+              className="seg-label btn btn-sm btn-success" 
+              onClick={(e) => this.togglePercentLabel('2', props.seg2Size, success, 'white', e)}
             >
-              <div className="color-box green"></div>
-              <span className="text">Backend</span>
-            </button>
+              <span>Backend</span>
+            </div>
           
-            <button
+            <div
               className="seg-label btn btn-sm btn-warning"
-              onMouseEnter={() => this.setState({ showPercentLabel: true, percent: props.seg3Size })}
-              onMouseLeave={() => this.setState({ showPercentLabel: false, percent: '' })}
+              onClick={(e) => this.togglePercentLabel('3', props.seg3Size, warning, 'white', e)}
             >
-              <div className="color-box orange"></div>
-              <span className="text">API</span>
-            </button>
+              API
+            </div>
           
-            <button 
+            <div 
               className="seg-label btn btn-sm btn-danger" 
-              onMouseEnter={() => this.setState({ showPercentLabel: true, percent: props.seg4Size })}
-              onMouseLeave={() => this.setState({ showPercentLabel: false, percent: '' })}
+              onClick={(e) => this.togglePercentLabel('4', props.seg4Size, danger, 'white', e)}
             >
-              <div className="color-box red"></div>
-              <span className="text">Issues</span>
-            </button>
+              Issues
+            </div>
           </div>
         </div>
       </Styles>

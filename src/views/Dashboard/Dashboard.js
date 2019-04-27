@@ -66,7 +66,7 @@ class Dashboard extends Component {
             width: 100%;
             margin-left: 0px;
             margin-right: 0px;
-            height: 360px;
+            height: 280px;
             background: white;
 
             .task-dist-card-header {
@@ -276,6 +276,11 @@ class Dashboard extends Component {
       fixedTotal = fixed2WeekTotal.reduce(getSum);
     }
 
+    const primary = '#007bff';
+    const success = '#28a745';
+    const warning = '#ffc107';
+    const danger = '#dc3545';
+
 
     return (
       <Styles>
@@ -423,10 +428,10 @@ class Dashboard extends Component {
                   <hr className="p-0 m-0" />
                   <div className="task-dist-card-body row">
                     <TasksDoughnutChart
-                      seg1Size={20} seg1Color="blue"
-                      seg2Size={40} seg2Color="green"
-                      seg3Size={30} seg3Color="orange"
-                      seg4Size={10} seg4Color="red"
+                      seg1Size={20} seg1Color={primary}
+                      seg2Size={40} seg2Color={success}
+                      seg3Size={30} seg3Color={warning}
+                      seg4Size={10} seg4Color={danger}
                     />
                   </div>
                 </div>
@@ -442,10 +447,10 @@ class Dashboard extends Component {
                   <hr className="p-0 m-0" />
                   <div className="task-dist-card-body row">
                     <TasksDoughnutChart
-                      seg1Size={37} seg1Color="blue"
-                      seg2Size={15} seg2Color="green"
-                      seg3Size={28} seg3Color="orange"
-                      seg4Size={20} seg4Color="red"
+                      seg1Size={37} seg1Color={primary}
+                      seg2Size={15} seg2Color={success}
+                      seg3Size={28} seg3Color={warning}
+                      seg4Size={20} seg4Color={danger}
                     />
                   </div>
                 </div>
@@ -461,10 +466,10 @@ class Dashboard extends Component {
                   <hr className="p-0 m-0" />
                   <div className="task-dist-card-body row">
                     <TasksDoughnutChart
-                      seg1Size={10} seg1Color="blue"
-                      seg2Size={30} seg2Color="green"
-                      seg3Size={20} seg3Color="orange"
-                      seg4Size={40} seg4Color="red"
+                      seg1Size={10} seg1Color={primary}
+                      seg2Size={30} seg2Color={success}
+                      seg3Size={20} seg3Color={warning}
+                      seg4Size={40} seg4Color={danger}
                     />
                   </div>
                 </div>
