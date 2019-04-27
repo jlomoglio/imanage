@@ -150,7 +150,6 @@ class TasksDoughnutChart extends Component {
           
           <div
             className="donut-hole" 
-            ref="donutHole"
             style={{ background: this.state.segmentColor }}
           ></div>
           <div className="pie"></div>
