@@ -9,7 +9,6 @@ import PayInfoModal from './components/UserProfile/PayInfoModal';
 @observer
 class App extends Component {
   render() {
-    //const UserProfileStore = this.props.UserProfileStore;
 
     const Styles = styled.div``;
 

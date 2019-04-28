@@ -10,6 +10,7 @@ import Help from '../../views/Profile/Help';
 import Dashboard from '../../views/Dashboard/Dashboard';
 import Projects from '../../views/Projects/Projects';
 import Backlog from '../../views/Backlog/Backlog';
+import Tasks from '../../views/Tasks/Tasks';
 import Board from '../../views/Board/Board';
 import Issues from '../../views/Issues/Issues';
 
@@ -59,7 +60,8 @@ class View extends Component {
           
 
           { AppStore.appView === 'Projects' && <Projects /> }
-          { AppStore.appView === 'Backlog' && <Backlog /> }
+          { AppStore.appView === 'Backlog' && <Backlog />}
+          { AppStore.appView === 'Tasks' && <Tasks />}
           { AppStore.appView === 'Board' && <Board /> }
           { AppStore.appView === 'Issues' && <Issues /> }
         </div>

@@ -48,7 +48,8 @@ class Sidebar extends Component {
           </NavItem> */}
 
           <NavItem label="Projects" icon="fa-project-diagram" view="Projects"></NavItem>
-          <NavItem label="Backlog" icon="fa-list-alt" view="Backlog"></NavItem>
+          <NavItem label="Backlog" icon="fa-clipboard-list" view="Backlog"></NavItem>
+          <NavItem label="Tasks" icon="fa-list-alt" view="Tasks"></NavItem>
           <NavItem label="Board" icon="fa-chalkboard-teacher" view="Board"></NavItem>
           <NavItem label="Issues" icon="fa-exclamation-triangle" view="Issues"></NavItem>
         </div>

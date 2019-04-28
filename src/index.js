@@ -7,6 +7,7 @@ import { Provider } from 'mobx-react';
 import AppStore from './stores/AppStore';
 import UserProfileStore from './stores/UserProfileStore';
 import DashboardStore from './stores/DashboardStore';
+import BacklogStore from './stores/BacklogStore';
 import ChatStore from './stores/ChatStore';
 
 const Root = (
@@ -14,6 +15,7 @@ const Root = (
     AppStore={AppStore} 
     UserProfileStore={UserProfileStore}
     DashboardStore={DashboardStore}
+    BacklogStore={BacklogStore}
     ChatStore={ChatStore}
   >
     <App />
