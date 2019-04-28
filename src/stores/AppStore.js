@@ -3,7 +3,7 @@ import { observable, action } from 'mobx';
 class AppStore {
   @observable appTitle = 'iManage';
   @observable appVersion = 'v0.0.1';
-  @observable appView = 'Backlog';
+  @observable appView = 'Projects';
   @observable appSubView = '';
   @observable appSubSubView = "" 
   @observable sidebarOpen = true; // true

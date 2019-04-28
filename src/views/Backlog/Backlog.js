@@ -64,19 +64,19 @@ class Backlog extends Component {
             <div className="backlog-card-header row">
               <div className="col-8">
                 <select className="form-control-sm float-left">
-                      <option>Project</option>
-                      {
-                        ProjectsStore.projects.map((project, index) => (
-                          <option
-                            key={index}
-                            style={{
-                              display: `${project.status === 'Open' ? 'block' : 'none'}`
-                            }}>
-                            { project.name }
-                          </option>
-                        ))
-                      }
-                    </select>
+                  <option>Project</option>
+                  {
+                    ProjectsStore.projects.map((project, index) => (
+                      <option
+                        key={index}
+                        style={{
+                          display:project.status === 'Open' ? 'block' : 'none'
+                        }}>
+                        { project.name }
+                      </option>
+                    ))
+                  }
+                </select>
                   
                 <select className="form-control-sm float-left ml-2">
                       <option>Move to Sprint</option>
@@ -97,14 +97,12 @@ class Backlog extends Component {
                 <thead>
                   <tr>
                     <th scope="col" style={{ width: '10px' }}></th>
-                    <th scope="col" style={{ width: '24px' }}>
-                      <Checkbox />
-                    </th>
+                    <th scope="col" style={{ width: '24px' }}><Checkbox /></th>
                     <th scope="col" style={{ width: '400px' }}>Title</th>
                     <th scope="col" style={{ width: '100px' }}>ID</th>
                     <th scope="col" style={{ width: '150px' }}>Project</th>
                     <th scope="col" style={{ width: '60px' }}>Priority</th>
-                    <th scope="col" style={{ width: '100px'}}>Est Points</th>
+                    <th scope="col" style={{ width: '100px'}}>Points</th>
                     <th scope="col">Actions</th>
                   </tr>
                 </thead>
