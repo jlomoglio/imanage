@@ -3,13 +3,14 @@ import { inject, observer } from 'mobx-react';
 import styled from 'styled-components';
 import Checkbox from '../../components/UI/Checkbox';
 
-@inject('BacklogStore')
+@inject('BacklogStore', 'ProjectsStore')
 @observer
 class Backlog extends Component {
   render() {
 
     const props = this.props;
     const BacklogStore = props.BacklogStore;
+    const ProjectsStore = props.ProjectsStore;
 
     const Styles = styled.div`
       .view-contents {
@@ -61,19 +62,32 @@ class Backlog extends Component {
           <h4 className="page-title">Backlog</h4>
           <div className="backlog-card">
             <div className="backlog-card-header row">
-              <div className="col-2">
-                <div className="input-group">
-                  <select className="form-control-sm">
-                    <option>Move to Sprint</option>
-                    <option>Sprint 1</option>
-                    <option>Sprint 2</option>
-                    <option>Sprint 3</option>
-                    <option>Sprint 4</option>
-                    <option>Sprint 5</option>
-                  </select>
-                </div>
+              <div className="col-8">
+                <select className="form-control-sm float-left">
+                      <option>Project</option>
+                      {
+                        ProjectsStore.projects.map((project, index) => (
+                          <option
+                            key={index}
+                            style={{
+                              display: `${project.status === 'Open' ? 'block' : 'none'}`
+                            }}>
+                            { project.name }
+                          </option>
+                        ))
+                      }
+                    </select>
+                  
+                <select className="form-control-sm float-left ml-2">
+                      <option>Move to Sprint</option>
+                      <option>Sprint 1</option>
+                      <option>Sprint 2</option>
+                      <option>Sprint 3</option>
+                      <option>Sprint 4</option>
+                      <option>Sprint 5</option>
+                    </select>
               </div>
-              <div className="col-10 buttons">
+              <div className="col-4 buttons">
                 <button className="btn btn-sm btn-secondary mr-2">Add Story</button>
               </div>
             </div>

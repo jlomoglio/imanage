@@ -3,10 +3,13 @@ import { inject, observer } from 'mobx-react';
 import styled from 'styled-components';
 
 
-@inject('AppStore')
+@inject('ProjectsStore')
 @observer
 class Projects extends Component {
   render() {
+
+    const props = this.props;
+    const ProjectsStore = props.ProjectsStore;
 
     const Styles = styled.div`
       .view-contents {
@@ -63,7 +66,7 @@ class Projects extends Component {
                   </div>
                   <input
                     type="text"
-                    className="form-control" id="inlineFormInputGroupUsername"
+                    className="form-control form-control-sm" id="inlineFormInputGroupUsername"
                     placeholder="Search"
                   />
                 </div>
@@ -86,62 +89,24 @@ class Projects extends Component {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <th scope="row">SimGen</th>
-                    <td>Joe LoMoglio</td>
-                    <td>03/10/2017</td>
-                    <td>4/02/2017</td>
-                    <td>Closed</td>
-                    <td>View</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">SimCore</th>
-                    <td>Joe LoMoglio</td>
-                    <td>03/10/2017</td>
-                    <td>11/16/2017</td>
-                    <td>Closed</td>
-                    <td>View</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">SimMod</th>
-                    <td>Joe LoMoglio</td>
-                    <td>04/08/2017</td>
-                    <td>11/16/2017</td>
-                    <td>Closed</td>
-                    <td>View</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">Vui-Kit</th>
-                    <td>Joe LoMoglio</td>
-                    <td>02/01/2018</td>
-                    <td>05/30/2018</td>
-                    <td>Closed</td>
-                    <td>View</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">JD Construction Report Tool</th>
-                    <td>Joe LoMoglio</td>
-                    <td>07/01/2018</td>
-                    <td>10/31/2018</td>
-                    <td>Closed</td>
-                    <td>View</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">The Veronica Chronicles Unity Game</th>
-                    <td>Joe LoMoglio</td>
-                    <td>11/01/2018</td>
-                    <td>12/31/2018</td>
-                    <td>Closed</td>
-                    <td>View</td>
-                  </tr>
-                  <tr>
-                    <th scope="row">iManage</th>
-                    <td>Joe LoMoglio</td>
-                    <td>01/10/2019</td>
-                    <td>---</td>
-                    <td>Open</td>
-                    <td>Edit | Close</td>
-                  </tr>
+                  {
+                    ProjectsStore.projects.map((project, index) => (
+                      <tr key={index}>
+                        <th scope="row" style={{ width: '280px' }}>{ project.name }</th>
+                        <td style={{ width: '150px' }}>{ project.lead }</td>
+                        <td style={{ width: '100px' }}>{ project.begin }</td>
+                        <td style={{ width: '100px' }}>{ project.end }</td>
+                        <td style={{ width: '100px' }}>{ project.status }</td>
+                        <td style={{display: `${project.status === 'Closed' ? 'block' : 'none'}`}}>
+                          <i className="fas fa-eye" />
+                        </td>
+                        <td style={{ display: `${project.status === 'Open' ? 'block' : 'none'}` }}>
+                          <i className="fas fa-edit float-left mr-3" />
+                          <i className="fas fa-door-closed float-left" />
+                        </td>
+                      </tr>
+                    ))
+                  }
                 </tbody>
               </table>
             </div>
