@@ -4,7 +4,7 @@ self.__precacheManifest = [
     "url": "/imanage/static/media/avatar-ted-anderson.7632cb2a.jpg"
   },
   {
-    "revision": "3b159e87213a530a3b72",
+    "revision": "681184ff577fd27ac0a0",
     "url": "/imanage/static/css/main.b6ee1ab2.chunk.css"
   },
   {
@@ -84,8 +84,8 @@ self.__precacheManifest = [
     "url": "/imanage/static/media/m9.ebfa81f2.png"
   },
   {
-    "revision": "3b159e87213a530a3b72",
-    "url": "/imanage/static/js/main.f3489dd3.chunk.js"
+    "revision": "681184ff577fd27ac0a0",
+    "url": "/imanage/static/js/main.a15a5067.chunk.js"
   },
   {
     "revision": "bb014a937f5d74e46c22c9fa7aa9b64e",
@@ -168,7 +168,7 @@ self.__precacheManifest = [
     "url": "/imanage/static/media/avatar-mark-wilson.a4e20456.jpg"
   },
   {
-    "revision": "2c3c43a74a6ce99d0606ce3b718d6832",
+    "revision": "9dcadd0e3750d50e77d92e3f67c39257",
     "url": "/imanage/index.html"
   }
 ];
