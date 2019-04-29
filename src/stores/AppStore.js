@@ -6,8 +6,8 @@ class AppStore {
   @observable appView = 'Dashboard';
   @observable appSubView = '';
   @observable appSubSubView = "" 
-  @observable sidebarOpen = true; // true
-  @observable sidePanelOpen = false; // false
+  @observable sidebarOpen = true;
+  @observable sidePanelOpen = false;
   @observable profileMenuOpen = false;
   @observable navSubItemOpen = false;
   @observable userStatus = 'Available';
