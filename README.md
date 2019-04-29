@@ -33,7 +33,7 @@ USER CHAT: Click the message icon in the upper right corner to open the chat pan
 * Build Help Page
 * Build Logout Page
 
-### PROJECTS
+### Projects
 * Add Create Project
 * Add View Project
 * Make table sortable
