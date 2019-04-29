@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import Shell from './components/shell/Shell'
 import EditImageModal from './components/EditImageModal/EditImageModal';
 import PayInfoModal from './components/UserProfile/PayInfoModal';
+import CreateProjectModal from './components/CreateProjectModal/CreateProjectModal';
 
 @inject('UserProfileStore')
 @observer
@@ -17,6 +18,7 @@ class App extends Component {
         <Shell />
         <EditImageModal />
         <PayInfoModal />
+        <CreateProjectModal />
       </Styles>
     );
   }

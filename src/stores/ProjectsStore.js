@@ -93,6 +93,16 @@ class ProjectStore {
     },
   ];
 
+  @observable showModal = false;
+
+  @action showCreateProjectModal = () => {
+    this.showModal = true;
+  }
+
+  @action hideCreateProjectModal = () => {
+    this.showModal = false;
+  }
+  
   @action getValue = (list) => {
     if (list === 'leads') {
       return this.lead;
@@ -163,6 +173,7 @@ class ProjectStore {
     this.lead = '';
     this.status = '';
     this.filtered = false;
+    this.distinctStatusList = [];
   }
 }
 

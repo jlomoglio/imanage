@@ -125,7 +125,12 @@ class Projects extends Component {
                 </button>
               </div>
               <div className="col-4 buttons">
-                <button className="btn btn-sm btn-secondary mr-2">Create Project</button>
+                <button
+                  className="btn btn-sm btn-secondary mr-2"
+                  onClick={() => ProjectsStore.showCreateProjectModal()}
+                >
+                  Create Project
+                </button>
               </div>
             </div>
             
