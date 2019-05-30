@@ -2,7 +2,7 @@
 
 The Demo Site is now live at: https://jlomoglio.github.io/imanage/
 
-This is a project I created to learn MERN. It's an Enterprise Development Team Management Tool and Company Portal.
+This is a demo project I created. It's an Enterprise Development Team Management Tool and Company Portal.
 
 ## Exploring the demo
 USER PROFILE: Click anywhere on the User Profile area at the top of the left side bar to open the dropdown menu. Then click
@@ -54,7 +54,6 @@ USER CHAT: Click the message icon in the upper right corner to open the chat pan
 ### Issues
 * Needs to be created
 
-This is an ongoing project that only serves to continue to improve my full-stack MERN development skills.
 
 
 
